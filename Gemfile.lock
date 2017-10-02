@@ -7,7 +7,10 @@ GEM
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
     backports (3.8.0)
+    bson (4.2.2)
     builder (3.2.3)
+    cassandra-driver (3.2.0)
+      ione (~> 1.2)
     codeclimate-engine-rb (0.4.0)
       virtus (~> 1.0)
     coercible (1.0.0)
@@ -39,6 +42,7 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     ice_nine (0.11.2)
+    ione (1.2.4)
     json (2.1.0)
     json_spec (1.1.5)
       multi_json (~> 1.0)
@@ -46,6 +50,8 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mongo (2.4.3)
+      bson (>= 4.2.1, < 5.0.0)
     multi_json (1.12.2)
     multi_test (0.1.2)
     netrc (0.11.0)
@@ -104,8 +110,10 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  cassandra-driver
   cucumber
   json_spec
+  mongo
   reek
   report_builder
   rest-client
