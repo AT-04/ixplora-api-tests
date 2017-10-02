@@ -1,8 +1,10 @@
 # Dependencies
 source 'https://rubygems.org'
 
+gem 'bson'
 gem 'cassandra-driver'
 gem 'cucumber'
+gem 'json'
 gem 'json_spec'
 gem 'mongo'
 gem 'rake'

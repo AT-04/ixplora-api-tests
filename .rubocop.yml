@@ -1,3 +1,6 @@
 # Custom config for Rubocop
 Style/GlobalVars:
   Enabled: false
+
+Metrics/LineLength:
+  Max: 120
