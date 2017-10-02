@@ -2,7 +2,7 @@ require 'pathname'
 require 'yaml'
 require 'singleton'
 
-# This class loads env file
+# This class loads the env file
 class LoadEnvFile
   include Singleton
   def find_config_file(filename)
