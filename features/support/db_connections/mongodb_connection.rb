@@ -2,6 +2,9 @@ require 'bson'
 require 'mongo'
 require 'singleton'
 
+# Turn off debug-mode
+Mongo::Logger.logger.level = Logger::WARN
+
 # Class for MongoDB connection and query manager
 class MongoDBConnection
   include Mongo
@@ -16,13 +19,14 @@ class MongoDBConnection
   end
 
   def start_connection
-    @client = Mongo::Client.new(['10.28.130.4:27017'], database: 'ixplora')
+    client_host = ["#{$mongodb_host}:#{$mongodb_port}"]
+    client_options = { database: $mongodb_db_name,
+                       user: $mongodb_username,
+                       password: $mongodb_password }
+    @client = Mongo::Client.new(client_host, client_options)
   end
 
   def close_connection
     @client.close
   end
 end
-
-mongo = MongoDBConnection.instance
-p mongo.find_by_id('59cfc79b5641d906f70bdaf8', 'user')
