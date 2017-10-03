@@ -18,6 +18,10 @@ class MongoDBConnection
     @client[document_name.to_sym].find(_id: BSON::ObjectId(id))
   end
 
+  def find_by_user_id(id, document_name)
+    @client[document_name.to_sym].find(userId: BSON::ObjectId(id))
+  end
+
   def start_connection
     client_host = ["#{$mongodb_host}:#{$mongodb_port}"]
     client_options = { database: $mongodb_db_name,
