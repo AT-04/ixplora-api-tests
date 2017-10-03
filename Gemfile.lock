@@ -95,8 +95,10 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bson
   cassandra-driver
   cucumber
+  json
   json_spec
   mongo
   rake
