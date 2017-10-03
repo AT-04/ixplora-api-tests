@@ -1,4 +1,3 @@
-# Author: Jose Torrez
 module ReportBuilder
   def self.configure
     defaults = builder.default_options
