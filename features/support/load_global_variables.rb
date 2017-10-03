@@ -7,6 +7,7 @@ $server_host = configuration['Api_server_data']['server_host']
 $server_port = configuration['Api_server_data']['server_port']
 $server_extension = configuration['Api_server_data']['server_extension']
 $server_version = configuration['Api_server_data']['server_version']
+$server_timeout = configuration['Api_server_data']['timeout']
 
 $mongodb_host = configuration['Mongodb']['mongo_host']
 $mongodb_port = configuration['Mongodb']['mongo_port']
