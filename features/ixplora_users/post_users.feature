@@ -18,7 +18,7 @@ Feature: Create users
  "role": "user"
 }
 """
-    Then I expect a '200' status code
+    Then I expect a "200" status code
     And I expect the following JSON response
 """
     {

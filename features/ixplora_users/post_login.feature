@@ -9,5 +9,5 @@ Feature: Verify login
   "password": "secretixplora"
   }
   """
-    Then I expect a '200' status code
+    Then I expect a "200" status code
 

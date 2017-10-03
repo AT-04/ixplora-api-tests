@@ -15,11 +15,20 @@ class MongoDBConnection
   end
 
   def find_by_id(id, document_name)
-    @client[document_name.to_sym].find(_id: BSON::ObjectId(id))
+    result = {}
+    @client[document_name.to_sym].find(_id: BSON::ObjectId(id)).each do |data|
+      result = data
+    end
+
+    result
   end
 
   def find_by_user_id(id, document_name)
-    @client[document_name.to_sym].find(userId: BSON::ObjectId(id))
+    result = {}
+    @client[document_name.to_sym].find(userId: id).each do |data|
+      result = data
+    end
+    result
   end
 
   def start_connection
@@ -34,3 +43,6 @@ class MongoDBConnection
     @client.close
   end
 end
+
+p MongoDBConnection.instance.find_by_user_id('59d4029e64c0be0665de1dc3', 'email_tokens')['token']
+#p MongoDBConnection.instance.find_by_id('59d4029e64c0be0665de1dc3', 'users')

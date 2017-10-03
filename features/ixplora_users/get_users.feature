@@ -3,7 +3,7 @@ Feature: Gets the user
   Scenario: I get the user by id
     Given I perform "GET" request to "/users/{userId}"
     When  I send the user "ID"
-    Then I expect a '200' status code
+    Then I expect a "200" status code
     And I expect the following JSON response
     """
     {
