@@ -1,8 +1,8 @@
-require_relative './load_env_file.rb'
+require_relative '../env_files/load_env_file'
 
 # Instance the global environment variables
 conf = LoadEnvFile.instance
-configuration = conf.load_app_config_file('env.yml')
+configuration = conf.load_app_config_file('../env.yml')
 $server_host = configuration['Api_server_data']['server_host']
 $server_port = configuration['Api_server_data']['server_port']
 $server_extension = configuration['Api_server_data']['server_extension']
