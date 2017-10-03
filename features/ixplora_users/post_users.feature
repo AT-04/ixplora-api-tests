@@ -1,4 +1,4 @@
-Feature: create users
+Feature: Create users
 
   Scenario: I create a new user
     Given I perform "PUT" request to "/users"
