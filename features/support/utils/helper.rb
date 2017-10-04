@@ -1,16 +1,22 @@
-require 'singleton'
-
 # This utility class will store data to be reused in the Step definitions.
 class Helper
-  include Singleton
-
-  attr_reader :user, :survey
-
-  def store_user_response(response)
-    @user = JSON.parse(response)
+  def self.initialize
+    @responses = {}
   end
 
-  def store_survey_response(response)
-    @survey = JSON.parse(response)
+  def self.clear_responses
+    @responses.clear
+  end
+
+  def self.add_response(type, body)
+    @responses.store(type, JSON.parse(body))
+  end
+
+  def self.content_from_response(type)
+    @responses[type]
+  end
+
+  def self.field_from_response(type, field)
+    @responses[type][field]
   end
 end
