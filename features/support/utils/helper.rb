@@ -14,7 +14,7 @@ class Helper
 
   def self.content_from_response(type)
     @responses[type]
-    end
+  end
 
   def self.field_from_response(type, field)
     @responses[type][field]
