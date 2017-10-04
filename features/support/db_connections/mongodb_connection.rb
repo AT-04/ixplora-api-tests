@@ -2,7 +2,7 @@
 Mongo::Logger.logger.level = Logger::WARN
 
 # Class for MongoDB connection and query manager
-class MongoDBConnection
+module MongoDBConnection
   include Mongo
   include Singleton
 
@@ -33,6 +33,22 @@ class MongoDBConnection
                        user: $mongodb_username,
                        password: $mongodb_password }
     @client = Mongo::Client.new(client_host, client_options)
+  end
+
+  def clean_collection(collection)
+    if collection != 'all'
+      @client[collection.to_sym].delete_many
+    else
+      @client[:email_tokens].delete_many
+      @client[:session_tokens].delete_many
+      @client[:surveys_tokens].delete_many
+      @client[:test].delete_many
+      @client[:users].delete_many
+    end
+  end
+
+  def delete_by_id(collection, id)
+    @client[collection.to_sym].delete_one(_id: id)
   end
 
   def close_connection

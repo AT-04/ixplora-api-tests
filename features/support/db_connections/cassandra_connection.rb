@@ -1,5 +1,5 @@
 # Cassandra cluster connects to cassandra db
-class CassandraConnection
+module CassandraConnection
   include Singleton
   def initialize
     connection_configuration
