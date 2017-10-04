@@ -1,9 +1,6 @@
-require 'cassandra'
-require 'singleton'
 # Cassandra cluster connects to cassandra db
 class CassandraConnection
   include Singleton
-
   def initialize
     connection_configuration
     connection

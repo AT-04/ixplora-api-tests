@@ -1,7 +1,3 @@
-require 'bson'
-require 'mongo'
-require 'singleton'
-
 # Turn off debug-mode
 Mongo::Logger.logger.level = Logger::WARN
 
@@ -43,6 +39,3 @@ class MongoDBConnection
     @client.close
   end
 end
-
-p MongoDBConnection.instance.find_by_user_id('59d4029e64c0be0665de1dc3', 'email_tokens')['token']
-#p MongoDBConnection.instance.find_by_id('59d4029e64c0be0665de1dc3', 'users')
