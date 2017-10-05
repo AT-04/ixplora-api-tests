@@ -1,7 +1,7 @@
 # This module contains common methods to be used in the step definitions.
 module CommonActions
   def self.built_data(input)
-    param = input[%r{(?<=[{])[a-zA-Z_.]+(?=[}])}]
+    param = input[/(?<=[{])[a-zA-Z_.]+(?=[}])/]
     if param
       param = param.split('.')
       input.sub!(/(?:[{])[a-zA-Z_.]+(?:[}])/, Helper.get_stored_field(param.first, param.last))

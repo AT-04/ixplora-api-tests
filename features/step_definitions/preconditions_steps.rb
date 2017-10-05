@@ -1,12 +1,14 @@
-Given(/^I register editor user$/) do
-  steps '
-   Given I perform "POST" request to "/users"
+Given(/^I register "(user|editor)" user/) do |user_type|
+  user_name = Faker::Name.name #=> "Christophe Bar tell"
+  user_email = Faker::Internet.email #=> "kirsten.greenholt@corkeryfisher.info"
+  steps %(
+   Given I perform "POST" request to "/examples"
     When  I set and store the following "user_request" body
     """
     {
      "_id": "",
-     "name": "user03",
-     "primaryEmail": "user03@mail.com",
+     "name": "#{user_name}",
+     "primaryEmail": "#{user_email}",
      "password": "secretixplora",
      "birthDate": "2001-01-01T00:00:00.000Z",
      "secondaryEmails": [],
@@ -14,13 +16,13 @@ Given(/^I register editor user$/) do
      "country": "Bolivia",
      "city": "Cochabamba",
      "gender": "Male",
-     "role": "user"
+     "role": "#{user_type}"
     }
     """
     And I send the request
     Then I expect a "201" status code
     And I store the response body as "user_response"
-  '
+  )
 end
 
 And(/^I validate email$/) do
@@ -37,7 +39,7 @@ end
 
 And(/^I login and get token$/) do
   steps '
-    And I perform "POST" request to "/users/login"
+    And I perform "POST" request to "/examples/login"
     And I set the following custom body:
       | email    | {user_response.primaryEmail}     |
       | password | {user_request.password} |

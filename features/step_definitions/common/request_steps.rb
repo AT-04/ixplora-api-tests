@@ -6,7 +6,6 @@ end
 When(/^I set and store the following "([^"]*)" body$/) do |request_name, content|
   Helper.add_data(request_name, JSON.parse(content))
   @request.add_body(content)
-
 end
 
 When(/^I set the following custom body:$/) do |table|

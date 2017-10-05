@@ -1,6 +1,7 @@
 Feature: Smoke
+  @precondition
   Scenario: APrecondition
-    Given I register editor user
+    Given I register "editor" user
     And I validate email
     And I login and get token
     And I create a survey

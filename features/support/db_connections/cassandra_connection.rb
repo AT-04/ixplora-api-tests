@@ -1,6 +1,5 @@
 # Cassandra cluster connects to cassandra db
 module CassandraConnection
-
   def self.initialize
     connection_configuration
     connection
