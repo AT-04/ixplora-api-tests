@@ -21,13 +21,18 @@ module MongoDBConnection
     @client.close
   end
 
-  def self.find_document_by_field(field, value, document_name, object_id = false)
+  def self.find_document_by_field(field, value, collection, object_id = false)
     result = {}
     value = BSON::ObjectId(value) if object_id
-    @client[document_name.to_sym].find(field.to_sym => value).each do |data|
+    @client[collection.to_sym].find(field.to_sym => value).each do |data|
       result = data
     end
     result
+  end
+
+  def self.delete_document_by_field(field, value, collection, object_id = false)
+    value = BSON::ObjectId(value) if object_id
+    @client[collection.to_sym].find(field.to_sym => value).delete_many
   end
 
   def self.clean_collection(collection)
