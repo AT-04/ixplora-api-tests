@@ -1,6 +1,6 @@
-And(/^I perform a query using "([^"]*)" to the "([a-z_]*)" document$/) do |param, document|
-  user_id = CommonActions.built_data(param)
-  @query_result = MongoDBConnection.find_by_user_id(user_id, document)
+And(/^I run a query to filter the field "([^"]*)" with value "([^"]*)" to "([a-z_]*)"$/) do |key, val, doc|
+  value = CommonActions.built_data(val)
+  @query_result = MongoDBConnection.find_document_by_field(key, value, doc)
 end
 
 And(/^I store the "([^"]*)" of query result as "([^"]*)"$/) do |field, key|

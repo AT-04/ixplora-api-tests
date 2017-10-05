@@ -28,7 +28,7 @@ end
 
 And(/^I validate email$/) do
   steps '
-    And I perform a query using "{user_response._id}" to the "email_tokens" document
+    And I run a query to filter the field "userId" with value "{user_response._id}" to "email_tokens"
     And I store the "token" of query result as "mail_token"
     And I perform "POST" request to "/tokens"
     And I set the following custom body:

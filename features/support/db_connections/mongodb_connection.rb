@@ -9,29 +9,25 @@ module MongoDBConnection
     start_connection
   end
 
-  def self.find_by_id(id, document_name)
-    result = {}
-    @client[document_name.to_sym].find(_id: BSON::ObjectId(id)).each do |data|
-      result = data
-    end
-
-    result
-  end
-
-  def self.find_by_user_id(id, document_name)
-    result = {}
-    @client[document_name.to_sym].find(userId: id).each do |data|
-      result = data
-    end
-    result
-  end
-
   def self.start_connection
     client_host = ["#{$mongodb_host}:#{$mongodb_port}"]
     client_options = { database: $mongodb_db_name,
                        user: $mongodb_username,
                        password: $mongodb_password }
     @client = Mongo::Client.new(client_host, client_options)
+  end
+
+  def self.close_connection
+    @client.close
+  end
+
+  def self.find_document_by_field(field, value, document_name, object_id = false)
+    result = {}
+    value = BSON::ObjectId(value) if object_id
+    @client[document_name.to_sym].find(field.to_sym => value).each do |data|
+      result = data
+    end
+    result
   end
 
   def self.clean_collection(collection)
@@ -44,13 +40,5 @@ module MongoDBConnection
       @client[:test].delete_many
       @client[:users].delete_many
     end
-  end
-
-  def self.delete_by_id(collection, id)
-    @client[collection.to_sym].delete_one(_id: id)
-  end
-
-  def self.close_connection
-    @client.close
   end
 end
