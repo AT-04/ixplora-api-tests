@@ -1,13 +1,13 @@
 require 'json'
 
 # Request class that abstracts the properties and fields of a API Request.
-class Request
+class APIRequest
   attr_reader :method, :header, :endpoint, :body
 
   def initialize(method)
     @method = method
     @body = {}
-    @header = { :'Content-type' => 'application/json' }
+    @header = { content_type: 'application/json' }
   end
 
   def add_authorization(token)
@@ -15,10 +15,10 @@ class Request
   end
 
   def add_body(content)
-    @body = JSON.parse(content)
+    @body = content
   end
 
   def append_endpoint(endpoint)
-    @endpoint = CommonActions.built_endpoint("#{$server_base_endpoint}#{endpoint}")
+    @endpoint = CommonActions.built_data("#{$server_base_endpoint}#{endpoint}")
   end
 end

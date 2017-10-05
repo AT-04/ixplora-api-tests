@@ -8,15 +8,15 @@ class Helper
     @responses.clear
   end
 
-  def self.add_response(type, body)
-    @responses.store(type, JSON.parse(body))
+  def self.add_data(type, body)
+    @responses.store(type, body)
   end
 
-  def self.content_from_response(type)
+  def self.get_stored_value(type)
     @responses[type]
   end
 
-  def self.field_from_response(type, field)
+  def self.get_stored_field(type, field)
     @responses[type][field]
   end
 end

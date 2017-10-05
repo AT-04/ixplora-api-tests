@@ -1,6 +1,6 @@
 Api_server_data:
- server_host: 10.28.130.4
- server_port: 6060
+ server_host: http://10.28.130.4
+ server_port: 3001
  server_extension: /api
  server_version: /v1
  timeout: 10

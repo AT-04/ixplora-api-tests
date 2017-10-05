@@ -9,6 +9,6 @@ gem 'json_spec'
 gem 'mongo'
 gem 'rake'
 gem 'report_builder'
-gem 'rest-client'
+gem 'rest-client', '2.0'
 gem 'rspec'
 gem 'rubocop', '~> 0.50.0', require: false
