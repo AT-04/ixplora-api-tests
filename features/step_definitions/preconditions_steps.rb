@@ -1,8 +1,9 @@
-Given(/^I register "(user|editor)" user/) do |user_type|
+Given(/^I register a new "(user|editor)"/) do |user_type|
   user_name = Faker::Name.name #=> "Christophe Bar tell"
   user_email = Faker::Internet.email #=> "kirsten.greenholt@corkeryfisher.info"
+
   steps %(
-   Given I perform "POST" request to "/examples"
+   Given I perform "POST" request to "/users"
     When  I set and store the following "user_request" body
     """
     {
@@ -39,12 +40,12 @@ end
 
 And(/^I login and get token$/) do
   steps '
-    And I perform "POST" request to "/examples/login"
+    And I perform "POST" request to "/users/login"
     And I set the following custom body:
       | email    | {user_response.primaryEmail}     |
-      | password | {user_request.password} |
-      | type     | 0                       |
-      | app      | MOBILE_APP              |
+      | password | {user_request.password}          |
+      | type     | 0                                |
+      | app      | MOBILE_APP                       |
     And I send the request
     Then I expect a "200" status code
     And I store the response body as "login_response"
