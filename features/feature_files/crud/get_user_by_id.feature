@@ -1,13 +1,13 @@
+@CRUD
 Feature: Post tokens
-  @precondition
-  Scenario: APrecondition
+
+  Background:
     Given I register a new "user"
     And I validate email
     And I login and get token
 
-  Scenario: Verify that "/tokens" end point can performing a "POST" request
-    Given I perform "POST" request to "/tokens"
+  Scenario: Verify that "/tokens" end point can perform "POST" request
+    Given I perform "GET" request to "/users/{user_response.id}"
     When I send the request
-    Then I expect a "201" status code
-    And I store the response body as "token_response_post"
-    And I verify that "token_response_post" body contains
+    Then I expect a "200" status code
+    And I store the response body as "user_info_response"

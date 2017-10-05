@@ -1,3 +1,8 @@
 Before do
  Helper.clear_data
- end
+
+end
+
+Before '@Smoke' do
+  
+end

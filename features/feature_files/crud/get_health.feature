@@ -1,5 +1,7 @@
+@CRUD
 Feature: health
-  Scenario: Verify that "/health" end point can performing "GET" request.
+
+  Scenario: Verify that "/health" end point can perform "GET" request.
     Given I perform "GET" request to "/health"
     When I send the request
     Then I expect a "200" status code

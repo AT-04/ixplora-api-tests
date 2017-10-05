@@ -1,4 +1,7 @@
-Feature: Post Surveys answers
+#to-do
+@CRUD
+Feature: Surveys answers
+
   Background:
     Given I register a new "editor"
     And I validate email
@@ -65,8 +68,6 @@ Feature: Post Surveys answers
     And I store the response body as "user_response"
 
 
-
-  @CRUD
   Scenario: Verify that "/surveys/{surveyId}/answers" end point can performing "POST" request.
     Given I perform "POST" request to "/surveys/{survey_response._id}/answers"
     And I set the header "Authorization" with "Bearer {login_response.token}"

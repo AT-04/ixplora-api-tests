@@ -1,12 +1,13 @@
-Feature: Put Surveys state
+@CRUD
+Feature: Surveys state
+
   Background:
     Given I register a new "user"
     And I validate email
     And I login and get token
     And I create a survey
 
-  @CRUD
-  Scenario: Verify that "/surveys/{surveyId}/state" end point can performing "PUT" request.
+  Scenario: Verify that "/surveys/{surveyId}/state" end point can perform "PUT" request.
     Given I perform "PUT" request to "/surveys/{survey_response._id}/state"
     And I set the header "Authorization" with "Bearer {login_response.token}"
     And I set and store the following "state_request" body
