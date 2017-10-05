@@ -59,9 +59,17 @@ When(/^I create a survey$/) do
     When  I set and store the following "survey_request" body
     """
     {
-     "audience": 0, "creationDate": "2017-09-29T23:24:54.255Z", "description": "Desc.", "domains": [],
-     "expirationDate": "2017-10-06T23:24:54.255Z", "questions": [], "releaseDate": "2017-09-29T23:24:54.255Z",
-     "responseQuantity": 0,"state": 0, "title": "Test Survey", "_id": ""
+    	"audience": 0,
+	    "creationDate": "2017-09-29T23:24:54.255Z",
+    	"description": "Desc.",
+    	"domains": [],
+    	"expirationDate": "2017-10-06T23:24:54.255Z",
+	    "questions": [],
+	    "releaseDate": "2017-09-29T23:24:54.255Z",
+    	"responseQuantity": 0,
+	    "state": 0,
+    	"title": "Test Survey",
+    	"_id": ""
     }
     """
     And I send the request
