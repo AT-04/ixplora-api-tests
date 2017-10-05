@@ -1,4 +1,4 @@
-And(/^I perform query using "([^"]*)" to the "([a-z_]*)" document$/) do |param, document|
+And(/^I perform a query using "([^"]*)" to the "([a-z_]*)" document$/) do |param, document|
   user_id = CommonActions.built_data(param)
   @query_result = MongoDBConnection.find_by_user_id(user_id, document)
 end

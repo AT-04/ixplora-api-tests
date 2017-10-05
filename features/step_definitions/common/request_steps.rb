@@ -3,7 +3,7 @@ Given(/^I perform "(GET|POST|PUT|DELETE)" request to "(.*)"$/) do |method, endpo
   @request.append_endpoint(endpoint)
 end
 
-When(/^I set the following "([^"]*)" body$/) do |request_name, content|
+When(/^I set and store the following "([^"]*)" body$/) do |request_name, content|
   Helper.add_data(request_name, JSON.parse(content))
   @request.add_body(content)
 
@@ -23,10 +23,10 @@ Then(/^I expect a "(\d+)" status code$/) do |code|
   expect(@response.code).to eql(code)
 end
 
-And(/^I store the "([^"]*)" response body$/) do |type|
+And(/^I store the response body as "([^"]*)"$/) do |type|
   Helper.add_data(type, JSON.parse(@response.body))
 end
 
-And(/^I set the Authorization token "(.*)"$/) do |param|
-  @request.add_authorization(CommonActions.built_data(param))
+And(/^I set the header "([^"]*)" with "(.*)"$/) do |key, value|
+  @request.add_header(key, CommonActions.built_data(value))
 end

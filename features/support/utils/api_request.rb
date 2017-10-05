@@ -10,8 +10,8 @@ class APIRequest
     @header = { content_type: 'application/json' }
   end
 
-  def add_authorization(token)
-    @header['Authorization'] = "Bearer #{token}"
+  def add_header(key, value)
+    @header[key] = value
   end
 
   def add_body(content)
