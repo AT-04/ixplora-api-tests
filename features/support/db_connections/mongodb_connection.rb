@@ -4,13 +4,12 @@ Mongo::Logger.logger.level = Logger::WARN
 # Class for MongoDB connection and query manager
 module MongoDBConnection
   include Mongo
-  include Singleton
 
-  def initialize
+  def self.initialize
     start_connection
   end
 
-  def find_by_id(id, document_name)
+  def self.find_by_id(id, document_name)
     result = {}
     @client[document_name.to_sym].find(_id: BSON::ObjectId(id)).each do |data|
       result = data
@@ -19,7 +18,7 @@ module MongoDBConnection
     result
   end
 
-  def find_by_user_id(id, document_name)
+  def self.find_by_user_id(id, document_name)
     result = {}
     @client[document_name.to_sym].find(userId: id).each do |data|
       result = data
@@ -27,7 +26,7 @@ module MongoDBConnection
     result
   end
 
-  def start_connection
+  def self.start_connection
     client_host = ["#{$mongodb_host}:#{$mongodb_port}"]
     client_options = { database: $mongodb_db_name,
                        user: $mongodb_username,
@@ -35,7 +34,7 @@ module MongoDBConnection
     @client = Mongo::Client.new(client_host, client_options)
   end
 
-  def clean_collection(collection)
+  def self.clean_collection(collection)
     if collection != 'all'
       @client[collection.to_sym].delete_many
     else
@@ -47,11 +46,11 @@ module MongoDBConnection
     end
   end
 
-  def delete_by_id(collection, id)
+  def self.delete_by_id(collection, id)
     @client[collection.to_sym].delete_one(_id: id)
   end
 
-  def close_connection
+  def self.close_connection
     @client.close
   end
 end
