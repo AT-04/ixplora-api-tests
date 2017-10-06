@@ -8,16 +8,17 @@ class Helper
     @data.clear
   end
 
-  def self.add_data(type, body)
-    @data.store(type, body)
+  def self.add_data(key, content)
+    @data.store(key, content)
   end
 
-  def self.get_stored_value(type)
-    @data[type]
+  def self.get_stored_value(key)
+    return @data[key] if @data[key]
+    {}
   end
 
-  def self.get_stored_field(type, field)
-    @data[type][field]
+  def self.get_stored_field(key, field)
+    @data[key][field]
   end
 
   def self.obtain_data

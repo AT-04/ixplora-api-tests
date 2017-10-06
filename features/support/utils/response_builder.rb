@@ -2,7 +2,7 @@
 module ResponseBuilder
   def self.parse_file(filename)
     base_path = File.dirname(__FILE__)
-    path = "#{base_path}/templates/#{filename}.json"
+    path = "#{base_path}/../json_templates/#{filename}.json"
     file = File.read(path)
     @template = JSON.parse(file)
     @copy = @template.is_a?(Hash) ? Hash[@template] : [].replace(@template)
