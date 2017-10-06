@@ -1,0 +1,14 @@
+{
+  "__v": "Int 32",
+  "name": "String",
+  "primaryEmail": "String",
+  "password": "String",
+  "birthDate": "Date",
+  "validated": "Boolean",
+  "country": "String",
+  "city": "String",
+  "gender": "String",
+  "role": "String",
+  "_id": "String",
+  "secondaryEmails": "Array"
+}
