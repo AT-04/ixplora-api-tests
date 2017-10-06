@@ -7,6 +7,7 @@ Feature: Survey
     And I login and get token
     And I create a survey
 
+  @Delete_created_data
   Scenario Outline:  Verify that "/surveys" end point can perform "GET" request.
     Given I perform "GET" request to "<End Point>"
     And I set the header "Authorization" with "Bearer {login_response.token}"

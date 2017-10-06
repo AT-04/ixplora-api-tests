@@ -30,9 +30,13 @@ module MongoDBConnection
     result
   end
 
-  def self.delete_document_by_field(field, value, collection, object_id = false)
+  def self.delete_document(field, value, collection, object_id = false)
     value = BSON::ObjectId(value) if object_id
     @client[collection.to_sym].find(field.to_sym => value).delete_many
+  end
+
+  def self.collections
+    @client.database.collection_names
   end
 
   def self.clean_collection(collection)
@@ -44,6 +48,14 @@ module MongoDBConnection
       @client[:surveys_tokens].delete_many
       @client[:test].delete_many
       @client[:users].delete_many
+    end
+  end
+
+  def self.delete_in_collections(body)
+    MongoDBConnection.collections.each do |col|
+      MongoDBConnection.delete_document('_id', body['_id'], col, true)
+      MongoDBConnection.delete_document('id', body['_id'], col)
+      MongoDBConnection.delete_document('userId', body['_id'], col)
     end
   end
 end
