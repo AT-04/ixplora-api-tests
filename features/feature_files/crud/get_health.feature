@@ -9,7 +9,4 @@ Feature: health
     And I build the expected response with following data
       | response_name        | health_response           |
       | template_name        | health                    |
-      | response_expect_name | health _response_expected |
-    Then I verify response with the following data
-      | expected_result | health _response_expected |
-      | actual_result   | health_response           |
+    Then I verify "health_response" with built expected response

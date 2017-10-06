@@ -38,6 +38,7 @@ module ResponseBuilder
   def self.build_with_array(request, expected, response)
     replace_in_array(request)
     replace_in_array(expected)
+    puts "heloooooooooooooooooooooooooooooooooo"
     replace_in_array(diff_array(response[0]))
   end
 

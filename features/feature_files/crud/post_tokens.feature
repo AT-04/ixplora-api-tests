@@ -17,4 +17,3 @@ Feature: User Tokens
     When I send the request
     Then I expect a "201" status code
     And I store the response body as "token_response"
-    And I verify that "token_response" body contains

@@ -1,14 +1,14 @@
 {
   "__v": "Integer",
-  "name": "string",
-  "primaryEmail": "string",
-  "password": "string",
-  "birthDate": "string",
+  "name": "String",
+  "primaryEmail": "String",
+  "password": "String",
+  "birthDate": "String",
   "validated": "boolean",
-  "country": "string",
-  "city": "string",
-  "gender": "string",
-  "role": "string",
-  "_id": "string",
+  "country": "String",
+  "city": "String",
+  "gender": "String",
+  "role": "String",
+  "_id": "String",
   "secondaryEmails": []
 }
