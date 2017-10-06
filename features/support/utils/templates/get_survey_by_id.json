@@ -1,0 +1,15 @@
+{
+  "_id": "String",
+  "audience": "Int32",
+  "creationDate": "String",
+  "description": "String",
+  "expirationDate": "String",
+  "releaseDate": "String",
+  "responseQuantity": "Int32",
+  "state": "Int32",
+  "title": "String",
+  "owner": "String",
+  "__v": "Int32",
+  "questions": [],
+  "domains": []
+}

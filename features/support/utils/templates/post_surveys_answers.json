@@ -1,0 +1,12 @@
+{
+  "info": {
+    "queriedHost": "String",
+    "triedHosts": {
+      "127.0.0.1:9042": null
+    },
+    "speculativeExecutions": "Int32",
+    "achievedConsistency": "Int32"
+  },
+  "columns": null,
+  "pageState": null
+}
