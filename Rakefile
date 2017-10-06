@@ -7,7 +7,7 @@ namespace 'report_builder' do
   task :smoke do
     sh 'cucumber -t @smoke f json -o ./reports/smoke_report.json'
   end
-  task :crud  do
+  task :crud do
     sh 'cucumber -t @CRUD f json -o ./reports/crud_report.json'
   end
   task :functional do
