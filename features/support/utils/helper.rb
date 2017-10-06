@@ -1,22 +1,26 @@
 # This utility class will store data to be reused in the Step definitions.
 class Helper
   def self.initialize
-    @responses = {}
+    @data = {}
   end
 
-  def self.clear_responses
-    @responses.clear
+  def self.clear_data
+    @data.clear
   end
 
-  def self.add_response(type, body)
-    @responses.store(type, JSON.parse(body))
+  def self.add_data(type, body)
+    @data.store(type, body)
   end
 
-  def self.content_from_response(type)
-    @responses[type]
+  def self.get_stored_value(type)
+    @data[type]
   end
 
-  def self.field_from_response(type, field)
-    @responses[type][field]
+  def self.get_stored_field(type, field)
+    @data[type][field]
+  end
+
+  def self.obtain_data
+    @data
   end
 end

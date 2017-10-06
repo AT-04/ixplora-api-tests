@@ -1,24 +1,15 @@
-require 'bson'
-require 'mongo'
-require 'singleton'
-
 # Turn off debug-mode
 Mongo::Logger.logger.level = Logger::WARN
 
 # Class for MongoDB connection and query manager
-class MongoDBConnection
+module MongoDBConnection
   include Mongo
-  include Singleton
 
-  def initialize
+  def self.initialize
     start_connection
   end
 
-  def find_by_id(id, document_name)
-    @client[document_name.to_sym].find(_id: BSON::ObjectId(id))
-  end
-
-  def start_connection
+  def self.start_connection
     client_host = ["#{$mongodb_host}:#{$mongodb_port}"]
     client_options = { database: $mongodb_db_name,
                        user: $mongodb_username,
@@ -26,7 +17,33 @@ class MongoDBConnection
     @client = Mongo::Client.new(client_host, client_options)
   end
 
-  def close_connection
+  def self.close_connection
     @client.close
+  end
+
+  def self.find_document_by_field(field, value, collection, object_id = false)
+    result = {}
+    value = BSON::ObjectId(value) if object_id
+    @client[collection.to_sym].find(field.to_sym => value).each do |data|
+      result = data
+    end
+    result
+  end
+
+  def self.delete_document_by_field(field, value, collection, object_id = false)
+    value = BSON::ObjectId(value) if object_id
+    @client[collection.to_sym].find(field.to_sym => value).delete_many
+  end
+
+  def self.clean_collection(collection)
+    if collection != 'all'
+      @client[collection.to_sym].delete_many
+    else
+      @client[:email_tokens].delete_many
+      @client[:session_tokens].delete_many
+      @client[:surveys_tokens].delete_many
+      @client[:test].delete_many
+      @client[:users].delete_many
+    end
   end
 end
