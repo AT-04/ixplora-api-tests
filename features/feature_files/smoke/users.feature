@@ -6,6 +6,7 @@ Feature: Server Health
     And I validate email
     And I login and get token
 
+  @Delete_created_data
   Scenario: Verify that "/users/{userId}" end point can perform "GET" request.
     Given I perform "GET" request to "/users/{user_response._id}"
     And I set the header "Authorization" with "Bearer {login_response.token}"
