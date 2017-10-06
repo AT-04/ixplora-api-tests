@@ -1,7 +1,3 @@
-require 'pathname'
-require 'yaml'
-require 'singleton'
-
 # This class loads the env file
 class LoadEnvFile
   include Singleton

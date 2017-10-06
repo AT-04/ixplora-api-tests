@@ -11,7 +11,6 @@ Mongodb:
   mongo_username: ixplora
   mongo_password: secretixplora
   mongo_db_name: ixplora
-  debug_mode: WARN
 
 Cassandra:
   cassandra_host: 10.28.130.4
