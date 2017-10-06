@@ -13,7 +13,7 @@ module CommonActions
     data.each do |key, value|
       data[key] = if value[/(?:[{])[a-zA-Z_.]+(?:[}])/]
                     CommonActions.built_data(value)
-                  elsif Helper.get_stored_value(value).nil?
+                  elsif Helper.get_stored_value(value).empty?
                     value[/[\d]+/] ? value.to_i : value
                   else
                     Helper.get_stored_value(value)
