@@ -4,3 +4,6 @@ Style/GlobalVars:
 
 Metrics/LineLength:
   Max: 120
+
+Metrics/BlockLength:
+  Max: 35
