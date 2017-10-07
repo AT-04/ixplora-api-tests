@@ -24,7 +24,6 @@ end
 
 And(/^I store the response body as "([^"]*)"$/) do |type|
   Helper.add_data(type, JSON.parse(@response.body))
-
 end
 
 And(/^I set the header "([^"]*)" with "(.*)"$/) do |key, value|

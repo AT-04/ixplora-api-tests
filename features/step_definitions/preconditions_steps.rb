@@ -59,17 +59,17 @@ When(/^I create a survey with "([^"]*)" and I save the request as "([^"]*)"$/) d
     When  I set and store the following "#{survey_request}" body
     """
     {
-    	"audience": 0,
-	    "creationDate": "2017-09-29T23:24:54.255Z",
-    	"description": "#{survey_description}",
-    	"domains": [],
-    	"expirationDate": "2017-10-06T23:24:54.255Z",
-	    "questions": [],
-	    "releaseDate": "2017-09-29T23:24:54.255Z",
-    	"responseQuantity": 0,
-	    "state": 0,
-    	"title": "#{survey_title}",
-    	"_id": ""
+      "_id": "",
+      "title": "#{survey_title}",
+      "description": "#{survey_description}",
+      "audience": 0,
+      "domains": [],
+      "state": 0,
+      "releaseDate": "2017-10-07T16:25:23.345Z",
+      "creationDate": "2017-10-07T16:25:23.345Z",
+      "expirationDate": "2017-10-14T16:25:23.345Z",
+      "responseQuantity": 0,
+      "questions": []
     }
     """
     And I send the request
