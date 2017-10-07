@@ -5,7 +5,7 @@ Feature: Users
     Given I register a new "user" and I save the request as "user_request"
     When I store the response body as "user_response"
 
-  Scenario: Verify that "/tokens" end point can perform "POST" request
+  Scenario: Verify that "/users/{user.id}" end point can perform "GET" request
     Given I perform "GET" request to "/users/{user_response.id}"
     When I send the request
     Then I expect a "200" status code
