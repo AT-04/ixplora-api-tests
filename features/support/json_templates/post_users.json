@@ -10,5 +10,5 @@
   "gender": "String",
   "role": "String",
   "_id": "String",
-  "secondaryEmails": "Array"
+  "secondaryEmails": []
 }

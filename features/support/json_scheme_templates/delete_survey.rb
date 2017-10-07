@@ -11,7 +11,7 @@ $scheme_delete_survey = {
     'expirationDate': { 'type' => 'Date' },
     'responseQuantity': { 'type' => 'Integer' },
     'owner': { 'type' => 'String' },
-    'domains': { 'type' => '[]' },
+    'domains': { 'type' => [] },
     '__v': { 'type' => 'Integer' }
     },
       'questions' => {
