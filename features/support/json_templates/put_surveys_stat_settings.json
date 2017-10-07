@@ -1,4 +1,5 @@
 {
   "statsAutoplay": "Boolean",
+  "statsQRCode" : "Boolean",
   "statsTimePerSlide": "Int32"
 }

@@ -1,0 +1,14 @@
+{
+  "_id": "String",
+  "title": "String",
+  "description": "String",
+  "quantity": "String",
+  "questions": [{
+    "_id": "String",
+    "sequence": "Int32",
+    "type": "String",
+    "text": "String",
+    "quantity": "Int32",
+    "options": []
+  }]
+}
