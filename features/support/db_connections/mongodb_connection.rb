@@ -52,10 +52,21 @@ module MongoDBConnection
   end
 
   def self.delete_in_collections(body)
-    MongoDBConnection.collections.each do |col|
-      MongoDBConnection.delete_document('_id', body['_id'], col, true)
-      MongoDBConnection.delete_document('id', body['_id'], col)
-      MongoDBConnection.delete_document('userId', body['_id'], col)
+    MongoDBConnection.collections.each do |collection|
+      field = '_id'
+      value = body['_id']
+      object_id = false
+      case collection
+      when 'email_tokens'
+        field = 'userId'
+      when 'session_tokens'
+        field = 'id'
+      when 'surveys'
+        field = 'owner'
+      else
+        object_id = true
+      end
+      MongoDBConnection.delete_document(field, value, collection, object_id)
     end
   end
 end
