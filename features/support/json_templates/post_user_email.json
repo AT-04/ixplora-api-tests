@@ -1,0 +1,22 @@
+{
+  "_id": "String",
+  "name": "String",
+  "primaryEmail": "String",
+  "password": "String",
+  "birthDate": "String",
+  "validated": "Boolean",
+  "country": "String",
+  "city": "String",
+  "gender": "String",
+  "role": "String",
+  "__v": "Int32",
+  "secondaryEmails": [{
+    "email": "String",
+    "validated": "Boolean",
+    "_id": "String"
+  }, {
+    "email": "String",
+    "validated": "Boolean",
+    "_id": "String"
+  }]
+}
