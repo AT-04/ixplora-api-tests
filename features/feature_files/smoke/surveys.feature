@@ -1,4 +1,4 @@
-@Smoke
+@Smoke @Delete_created_data
 Feature: Survey
 
   Background:
@@ -11,7 +11,6 @@ Feature: Survey
     And I store the response body as "survey_response"
     And I change the "survey_response._id" state to "1" with "login_response.token"
 
-  @Delete_created_data
   Scenario Outline:  Verify that "/surveys" end point can perform "GET" request.
     Given I perform "GET" request to "<End Point>"
     And I set the header "Authorization" with "Bearer {login_response.token}"

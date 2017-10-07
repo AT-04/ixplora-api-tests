@@ -1,4 +1,4 @@
-@Smoke
+@Smoke @Delete_created_data
 Feature: Users
 
   Background:
@@ -8,7 +8,6 @@ Feature: Users
     And I login to "MOBILE_APP" using "user_response.primaryEmail" and "user_request.password"
     And I store the response body as "login_response"
 
-  @Delete_created_data
   Scenario: Verify that "/users/{userId}" end point can perform "GET" request.
     Given I perform "GET" request to "/users/{user_response._id}"
     And I set the header "Authorization" with "Bearer {login_response.token}"
