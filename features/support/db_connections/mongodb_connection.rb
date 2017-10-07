@@ -54,7 +54,6 @@ module MongoDBConnection
   def self.delete_in_collections(body)
     MongoDBConnection.collections.each do |collection|
       field = '_id'
-      value = body['_id']
       object_id = false
       case collection
       when 'email_tokens'
@@ -66,7 +65,7 @@ module MongoDBConnection
       else
         object_id = true
       end
-      MongoDBConnection.delete_document(field, value, collection, object_id)
+      MongoDBConnection.delete_document(field, body['_id'], collection, object_id)
     end
   end
 end
