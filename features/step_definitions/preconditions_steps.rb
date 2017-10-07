@@ -75,15 +75,16 @@ When(/^I create a survey$/) do
     And I send the request
     Then I expect a "201" status code
     And I store the response body as "survey_response"
+  '
+end
+
+When(/^I change the survey state to "(\d+)"$/) do |state_code|
+  steps %(
     And I perform "PUT" request to "/surveys/{survey_response._id}/state"
     And I set the header "Authorization" with "Bearer {login_response.token}"
-    When  I set and store the following "survey_request" body
-    """
-    {
-     "state": "1"
-    }
-    """
+    And I set the following custom body:
+    | state | #{state_code} |
     And I send the request
     Then I expect a "200" status code
-  '
+  )
 end
