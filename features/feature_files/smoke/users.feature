@@ -1,10 +1,12 @@
 @Smoke
-Feature: Server Health
+Feature: Users
 
   Background:
-    Given I register a new "user"
-    And I validate email
-    And I login and get token
+    Given I register a new "user" and I save the request as "user_request"
+    And I store the response body as "user_response"
+    And I validate email using "user_response"
+    And I login to "MOBILE_APP" using "user_response.primaryEmail" and "user_request.password"
+    And I store the response body as "login_response"
 
   @Delete_created_data
   Scenario: Verify that "/users/{userId}" end point can perform "GET" request.

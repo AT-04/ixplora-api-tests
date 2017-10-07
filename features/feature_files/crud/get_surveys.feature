@@ -2,9 +2,11 @@
 Feature: Get Surveys
 
   Background:
-    Given I register a new "user"
-    And I validate email
-    And I login and get token
+    Given I register a new "user" and I store the request as "user_request"
+    And I store the response body as "user_response"
+    And I validate email using "user_response"
+    And I login and get token using "user_response" and "user_request"
+    And I store the response body as "login_response"
     And I perform "POST" request to "/surveys"
     And I set the header "Authorization" with "Bearer {login_response.token}"
     When  I set and store the following "survey_request" body
