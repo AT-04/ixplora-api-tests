@@ -2,18 +2,19 @@
 Feature: User Tokens
 
   Background:
-    Given I register a new "user"
-    And I validate email
-    And I login and get token
+    Given I register a new "user" and I save the request as "user_request"
+    When I store the response body as "user_response"
+    And I run a query to filter the field "userId" with value "user_response._id" to "email_tokens"
+    And I store the "token" of query result as "mail_token"
 
   Scenario: Verify that "/tokens" end point can performing "POST" request
     Given I perform "POST" request to "/tokens"
-    When  I set and store the following "token_request" body
-    """
-    {
-      "token": "{}"
-     }
-    """
-    When I send the request
-    Then I expect a "201" status code
-    And I store the response body as "token_response"
+    When I set the following custom body:
+      | token | mail_token |
+    And I send the request
+    Then I expect a "200" status code
+    And I build the expected response with following data
+      | request_name  | survey_request         |
+      | response_name | clone_surveys_response |
+      | template_name | post_token             |
+    Then I verify "clone_surveys_response" with built expected response
