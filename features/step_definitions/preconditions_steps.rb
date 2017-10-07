@@ -25,9 +25,9 @@ Given(/^I register a new "(user|editor)" and I save the request as "([^"]*)"$/) 
   )
 end
 
-And(/^I validate email using "(.*)"$/) do |user_response|
+And(/^I validate email using "(.*)"$/) do |user_id|
   steps %(
-    And I run a query to filter the field "userId" with value "{#{user_response}._id}" to "email_tokens"
+    And I run a query to filter the field "userId" with value "{#{user_id}}" to "email_tokens"
     And I store the "token" of query result as "mail_token"
     And I perform "POST" request to "/tokens"
     And I set the following custom body:
@@ -77,10 +77,10 @@ When(/^I create a survey with "([^"]*)" and I save the request as "([^"]*)"$/) d
   )
 end
 
-When(/^I change the survey state to "(\d+)"$/) do |state_code|
+When(/^I change the "([^"]*)" state to "(\d+)" with "([^"]*)"$/) do |survey_id, state_code, user_token|
   steps %(
-    And I perform "PUT" request to "/surveys/{survey_response._id}/state"
-    And I set the header "Authorization" with "Bearer {login_response.token}"
+    And I perform "PUT" request to "/surveys/{#{survey_id}}/state"
+    And I set the header "Authorization" with "Bearer {#{user_token}}"
     And I set the following custom body:
     | state | #{state_code} |
     And I send the request

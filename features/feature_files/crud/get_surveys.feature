@@ -2,42 +2,14 @@
 Feature: Get Surveys
 
   Background:
-    Given I register a new "user" and I store the request as "user_request"
-    And I store the response body as "user_response"
-    And I validate email using "user_response"
-    And I login and get token using "user_response" and "user_request"
+    Given I register a new "user" and I save the request as "user_request"
+    When I store the response body as "user_response"
+    And I validate email using "user_response._id"
+    And I login to "MOBILE_APP" using "user_response.primaryEmail" and "user_request.password"
     And I store the response body as "login_response"
-    And I perform "POST" request to "/surveys"
-    And I set the header "Authorization" with "Bearer {login_response.token}"
-    When  I set and store the following "survey_request" body
-    """
-    {
-    	"audience": 0,
-	    "creationDate": "2017-09-29T23:24:54.255Z",
-    	"description": "Desc.",
-    	"domains": [],
-    	"expirationDate": "2017-10-06T23:24:54.255Z",
-	    "questions": [],
-	    "releaseDate": "2017-09-29T23:24:54.255Z",
-    	"responseQuantity": 0,
-	    "state": 0,
-    	"title": "Test Survey",
-    	"_id": ""
-    }
-    """
-    And I send the request
-    Then I expect a "201" status code
+    And I create a survey with "login_response.token" and I save the request as "survey_request"
     And I store the response body as "survey_response"
-    And I perform "PUT" request to "/surveys/{survey_response._id}/state"
-    And I set the header "Authorization" with "Bearer {login_response.token}"
-    When  I set and store the following "survey_request" body
-    """
-    {
-     "state": "1"
-    }
-    """
-    And I send the request
-    Then I expect a "200" status code
+    And I change the "survey_response._id" state to "1" with "login_response.token"
 
   Scenario: Verify that "/surveys/{surveyId}" end point can perform "GET" request.
     Given I perform "GET" request to "/surveys/{survey_response._id}"
