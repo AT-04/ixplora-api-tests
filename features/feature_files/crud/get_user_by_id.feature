@@ -10,6 +10,7 @@ Feature: Users
     When I send the request
     Then I expect a "200" status code
     And I store the response body as "user_info_response"
+    Then I verify schema with "get_user_by_id" template and "user_info_response"
     And I build the expected response with following data
       | request_name  | user_request       |
       | response_name | user_info_response |

@@ -17,6 +17,7 @@ Feature: Get Surveys overview
     When I send the request
     Then I expect a "200" status code
     And I store the response body as "surveys_overview_response"
+    Then I verify schema with "get_survey_overview" template and "surveys_overview_response"
     And I build the expected response with following data
       | request_name  | survey_request            |
       | response_name | surveys_overview_response |

@@ -16,6 +16,7 @@ Feature: Delete Surveys
     When I send the request
     Then I expect a "200" status code
     And I store the response body as "surveys_delete_response"
+    Then I verify schema with "delete_survey" template and "surveys_delete_response"
     And I build the expected response with following data
       | response_name | surveys_delete_response |
       | template_name | delete_surveys          |

@@ -1,4 +1,4 @@
-$scheme_get_survey = {type: 'object',
+$scheme_get_surveys = {type: 'object',
                       properties: {_id: {type: 'String'},
                                    title: {type: 'String'},
                                    description: {type: 'String'},

@@ -17,6 +17,7 @@ Feature: Surveys clone
     When I send the request
     Then I expect a "201" status code
     And I store the response body as "clone_surveys_response"
+    Then I verify schema with "post_survey_clone" template and "clone_surveys_response"
     And I build the expected response with following data
       | request_name  | survey_request         |
       | response_name | clone_surveys_response |

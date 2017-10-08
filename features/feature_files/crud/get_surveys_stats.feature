@@ -17,6 +17,7 @@ Feature: Surveys stats
     When I send the request
     Then I expect a "200" status code
     And I store the response body as "surveys_info_response"
+    Then I verify schema with "get_survey_stats_without_questions" template and "surveys_info_response"
     And I build the expected response with following data
       | request_name  | survey_request                |
       | response_name | surveys_info_response         |

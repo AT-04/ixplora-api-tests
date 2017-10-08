@@ -16,9 +16,10 @@ Feature: Get Surveys
     And I set the header "Authorization" with "Bearer {login_response.token}"
     When I send the request
     Then I expect a "200" status code
-    And I store the response body as "surveys_response_get"
+    And I store the response body as "get_surveys_response"
+    Then I verify schema with "get_surveys" template and "get_surveys_response"
     And I build the expected response with following data
       | request_name  | survey_request       |
-      | response_name | surveys_response_get |
+      | response_name | get_surveys_response |
       | template_name | get_surveys          |
     Then I verify "surveys_response_get" with built expected response
