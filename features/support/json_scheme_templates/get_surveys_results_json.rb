@@ -1,0 +1,13 @@
+$scheme_get_surveys_results_json = {type: 'object',
+                                    properties: {results: {id: {type: 'String'},
+                                                           title: {type: 'String'},
+                                                           description: {type: 'String'},
+                                                           creationDate: {type: 'String'},
+                                                           publishing: {type: 'String'},
+                                                           endDate: {type: 'String'},
+                                                           downloadDate: {type: 'String'},
+                                                           scope: {type: 'String'}},
+                                                 questions: {label: {type: 'String'},
+                                                             options: {type: 'String'},
+                                                             type: {type: 'String'}},
+                                                 answers: {type: []}}}
