@@ -1,4 +1,4 @@
-And(/^I run a query to filter the field "([^"]*)" with value "([^"]*)" to "([a-z_]*)"$/) do |key, val, doc|
+And(/^I run a query to filter the field "([^"]*)" with value "([^"]*)" in "([a-z_]*)"$/) do |key, val, doc|
   value = CommonActions.built_data(val)
   @query_result = MongoDBConnection.find_document_by_field(key, value, doc)
 end

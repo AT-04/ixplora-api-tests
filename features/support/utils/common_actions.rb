@@ -20,4 +20,13 @@ module CommonActions
                   end
     end
   end
+
+  def self.built_custom_json(json_string)
+    loop do
+      matches = json_string.scan(/(?:[{])[a-zA-Z_.]+(?:[}])/)
+      break if matches.size.zero?
+      json_string = json_string.sub(/(?:[<])(?:[{])[a-zA-Z_.]+(?:[}])(?:[>])/, built_data(matches.first))
+    end
+    json_string
+  end
 end

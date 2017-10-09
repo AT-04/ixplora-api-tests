@@ -1,5 +1,4 @@
-#This request doesn't have response
-@CRUD
+@CRUD @Delete_created_data
 Feature: Users logout
 
   Background:
@@ -11,5 +10,8 @@ Feature: Users logout
 
   Scenario: Verify that "/users/logout" end point can perform "POST" request
     Given I perform "POST" request to "/users/logout"
-    When I send the request
+    When I set the header "Authorization" with "Bearer {login_response.token}"
+    And I set the following custom body:
+      | id | {user_response._id} |
+    And I send the request
     Then I expect a "201" status code

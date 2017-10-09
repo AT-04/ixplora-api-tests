@@ -1,2 +1,3 @@
-$scheme_get_survey_results_csv = {type: 'object',
-                                  properties: {results: {type: 'String'}}}
+$scheme_get_surveys_results_csv = { 'properties' => { 'results' => { 'type' => 'string' } },
+                                    'required' => ['results'],
+                                    'type' => 'object' }

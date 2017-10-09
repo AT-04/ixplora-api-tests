@@ -1,21 +1,23 @@
 @CRUD @Delete_created_data
-Feature: Surveys
+Feature: Modify Surveys
 
   Background:
     Given I register a new "editor" and I save the request as "editor_request"
     When I store the response body as "editor_response"
     And I validate email using "editor_response._id"
-    And I login to "WEB_APP" using "editor_response.primaryEmail" and "editor_request.password"
+    And I login to "MOBILE_APP" using "editor_response.primaryEmail" and "editor_request.password"
     And I store the response body as "login_response"
+    And I create a survey with "login_response.token" and I save the request as "survey_request"
+    And I store the response body as "survey_response"
 
-  Scenario: Verify that "/surveys" end point can perform "POST" request
-    Given I perform "POST" request to "/surveys"
-    When I set the header "Authorization" with "Bearer {login_response.token}"
-    And  I set and store the following "survey_request" body
+  Scenario: Verify that "/surveys/{surveyId}" end point can perform "PUT" request.
+    Given I perform "PUT" request to "/surveys/{survey_response._id}"
+    And I set the header "Authorization" with "Bearer {login_response.token}"
+    And I set and store the following "survey_put_request" body
     """
     {
-      "_id": "",
-      "title": "New Survey 01",
+      "_id": "<{survey_response._id}>",
+      "title": "<{survey_response.title}>",
       "description": "New Survey Description",
       "audience": 1,
       "domains": [],
@@ -45,7 +47,7 @@ Feature: Surveys
       }]
     }
     """
-    And I send the request
-    Then I expect a "201" status code
-    And I store the response body as "survey_response"
-    And I verify the "survey_response" schema with "post_survey" template
+    When I send the request
+    Then I expect a "200" status code
+    And I store the response body as "surveys_put_response"
+    And I verify the "surveys_put_response" schema with "delete_surveys" template

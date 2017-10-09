@@ -10,3 +10,7 @@ Metrics/BlockLength:
 
 Metrics/MethodLength:
   Max: 15
+
+AllCops:
+  Exclude:
+    - './features/support/json_scheme_templates/**'
