@@ -1,7 +1,7 @@
 require_relative './load_schema_files.rb'
 $variables_schema = {}
 $variables_schema.store('delete_survey', $scheme_delete_survey)
-$variables_schema.store('get_health', $scheme_get_health)
+$variables_schema.store('health', $scheme_get_health)
 $variables_schema.store('get_survey_by_id', $scheme_get_survey_by_id)
 $variables_schema.store('get_survey_overview', $scheme_get_survey_overview)
 $variables_schema.store('get_survey_stats_with_questions', $scheme_get_survey_stats_with_q)

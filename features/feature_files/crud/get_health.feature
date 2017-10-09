@@ -6,7 +6,7 @@ Feature: health
     When I send the request
     Then I expect a "200" status code
     And I store the response body as "health_response"
-    Then I verify schema with "get_health" template and "health_response"
+    Then I verify schema with "health" template and "health_response"
     And I build the expected response with following data
       | response_name        | health_response           |
       | template_name        | health                    |
