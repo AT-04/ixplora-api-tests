@@ -71,7 +71,7 @@ Feature: Surveys answers
     And I store the response body as "answers_response"
     Then I verify schema with "post_surveys_answers" template and "answers_response"
     And I build the expected response with following data
-      | request_name  | answers_request  |
-      | response_name | answers_response |
-      | template_name | post_surveys_answers    |
-    Then I verify "post_surveys_answers" with built expected response
+      | request_name  | answers_request      |
+      | response_name | answers_response     |
+      | template_name | post_surveys_answers |
+    Then I verify "answers_response" with built expected response
