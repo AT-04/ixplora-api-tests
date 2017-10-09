@@ -23,4 +23,4 @@ Feature: Surveys stats
       | request_name  | user_request                      |
       | response_name | user_info_response                |
       | template_name | get_survey_stat_without_questions |
-    Then I verify "surveys_delete_response" with built expected response
+    Then I verify "surveys_stats_response" with built expected response
