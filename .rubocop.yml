@@ -13,4 +13,5 @@ Metrics/MethodLength:
 
 AllCops:
   Exclude:
-    - './features/support/json_scheme_templates/**'
+    - features/support/json_scheme_templates/**/*
+    - vendor/**/*
