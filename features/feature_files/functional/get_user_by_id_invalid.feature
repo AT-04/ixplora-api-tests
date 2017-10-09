@@ -8,9 +8,9 @@ Feature: Users get by Id as a negative
     And I login to "MOBILE_APP" using "user_response.primaryEmail" and "user_request.password"
     And I store the response body as "login_response"
 
-  Scenario Outline: Verify tht user is not created with invalid information
+  Scenario Outline: Verify that user is not "GET" with invalid information
     Given I perform "GET" request to "/users/<USER_ID>"
-    When I set the header "Authorization" with "bearer <VALUE>"
+    When I set the header "Authorization" with "bearer {login_response.token}"
     And I send the request
     Then I expect a "400" status code
     And I store the response body as "user_response_get"
@@ -19,11 +19,11 @@ Feature: Users get by Id as a negative
     """
     {
       "status": "400",
-      "source": "/users/userId/emails",
+      "source": "/users/userId",
       "detail": "Invalid data"
     }
     """
     Examples:
-    | USER_ID | VALUE    |
-    | null    | 12376324 |
-    | ·"#%    |          |
+      | USER_ID                  |
+      | 59d7e00a9eb6160dee1d7c25 |
+      | ·#%~@#€#@~€@             |

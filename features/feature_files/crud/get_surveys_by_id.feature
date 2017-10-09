@@ -23,3 +23,6 @@ Feature: Surveys
 #      | response_name | surveys_response_get |
 #      | template_name | get_surveys          |
 #    Then I verify "surveys_response_get" with built expected response
+    And I run a query to filter the field "_id" with value "{survey_response._id}" in "surveys"
+    And I store the document query result as "survey_data"
+    Then I verify that "surveys_response_get" is persisted in MongoDB as "survey_data"

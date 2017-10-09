@@ -22,33 +22,21 @@ module MongoDBConnection
   end
 
   def self.find_document_by_field(field, value, collection, object_id = false)
-    result = {}
-    value = BSON::ObjectId(value) if object_id
+    result = []
+    value = BSON::ObjectId(value) if object_id || field.eql?('_id')
     @client[collection.to_sym].find(field.to_sym => value).each do |data|
-      result = data
+      result << data
     end
     result
   end
 
   def self.delete_document(field, value, collection, object_id = false)
-    value = BSON::ObjectId(value) if object_id
+    value = BSON::ObjectId(value) if object_id || field.eql?('_id')
     @client[collection.to_sym].find(field.to_sym => value).delete_many
   end
 
   def self.collections
     @client.database.collection_names
-  end
-
-  def self.clean_collection(collection)
-    if collection != 'all'
-      @client[collection.to_sym].delete_many
-    else
-      @client[:email_tokens].delete_many
-      @client[:session_tokens].delete_many
-      @client[:surveys_tokens].delete_many
-      @client[:test].delete_many
-      @client[:users].delete_many
-    end
   end
 
   def self.delete_in_collections(body)

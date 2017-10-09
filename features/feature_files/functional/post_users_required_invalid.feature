@@ -7,7 +7,6 @@ Feature: Create a new user with blank or invalid information
     When  I set and store the following "user_request" body
     """
     {
-
       "birthDate": "<BIRTH>",
       "city": "<CITY>",
       "country": "<COUNTRY>",
@@ -34,86 +33,86 @@ Feature: Create a new user with blank or invalid information
     }
     """
     Examples:
-    | BIRTH                | CITY   | COUNTRY | GENDER | NAME      | PASS    | PRI_MAIL      | ROLE | SEC_MAIL | VAL   |
-    |                      | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | false |
-    | 1980-03-08T13:00:00Z |        | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | false |
-    | 1980-03-08T13:00:00Z | La Paz |         | Male   | Simon Gav | secret1 | user@mail.com | user |          | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia |        | Simon Gav | secret1 | user@mail.com | user |          | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   |           | secret1 | user@mail.com | user |          | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav |         | user@mail.com | user |          | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 |               | user |          | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com |      |          | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          |       |
-    |                      |        |         |        |           |         |               |      |          |       |
-    | "·%&ª\'¿             | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | false |
-    | 1980-03-08T13:00:00Z | "·%&ª\ | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | false |
-    | 1980-03-08T13:00:00Z | La Paz | "·%&ª\  | Male   | Simon Gav | secret1 | user@mail.com | user |          | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | "·%&ª\ | Simon Gav | secret1 | user@mail.com | user |          | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | "·%&ª\ \' | secret1 | user@mail.com | user |          | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | "·%&ª\  | user@mail.com | user |          | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | "·%&ª\        | user |          | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | "·%& |          | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | "·%&ª |
-    | "·%&ª\'¿             | "·%&ª\ | "·%&ª\  | "·%&ª\ | "·%&ª\ \' | "·%&ª\  | "·%&ª\        | "·%& |          | "·%&ª |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | false |
-    |                      | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | false |
-    | 1980-03-08T13:00:00Z |        | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | false |
-    | 1980-03-08T13:00:00Z | La Paz |         | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia |        | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   |           | secret1 | user@mail.com | user | "·%&ª\'¿ | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav |         | user@mail.com | user | "·%&ª\'¿ | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 |               | user | "·%&ª\'¿ | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com |      | "·%&ª\'¿ | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ |       |
-    |                      |        |         |        |           |         |               |      | "·%&ª\'¿ |       |
-    | "·%&ª\'¿             | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | false |
-    | 1980-03-08T13:00:00Z | "·%&ª\ | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | false |
-    | 1980-03-08T13:00:00Z | La Paz | "·%&ª\  | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | "·%&ª\ | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | "·%&ª\ \' | secret1 | user@mail.com | user | "·%&ª\'¿ | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | "·%&ª\  | user@mail.com | user | "·%&ª\'¿ | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | "·%&ª\        | user | "·%&ª\'¿ | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | "·%& | "·%&ª\'¿ | false |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | "·%&ª |
-    | "·%&ª\'¿             | "·%&ª\ | "·%&ª\  | "·%&ª\ | "·%&ª\ \' | "·%&ª\  | "·%&ª\        | "·%& | "·%&ª\'¿ | "·%&ª |
-    |                      | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | true  |
-    | 1980-03-08T13:00:00Z |        | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | true  |
-    | 1980-03-08T13:00:00Z | La Paz |         | Male   | Simon Gav | secret1 | user@mail.com | user |          | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia |        | Simon Gav | secret1 | user@mail.com | user |          | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   |           | secret1 | user@mail.com | user |          | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav |         | user@mail.com | user |          | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 |               | user |          | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com |      |          | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | true  |
-    | "·%&ª\'¿             | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | true  |
-    | 1980-03-08T13:00:00Z | "·%&ª\ | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | true  |
-    | 1980-03-08T13:00:00Z | La Paz | "·%&ª\  | Male   | Simon Gav | secret1 | user@mail.com | user |          | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | "·%&ª\ | Simon Gav | secret1 | user@mail.com | user |          | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | "·%&ª\ \' | secret1 | user@mail.com | user |          | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | "·%&ª\  | user@mail.com | user |          | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | "·%&ª\        | user |          | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | "·%& |          | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | true  |
-    |                      | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | true  |
-    | 1980-03-08T13:00:00Z |        | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | true  |
-    | 1980-03-08T13:00:00Z | La Paz |         | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia |        | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   |           | secret1 | user@mail.com | user | "·%&ª\'¿ | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav |         | user@mail.com | user | "·%&ª\'¿ | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 |               | user | "·%&ª\'¿ | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com |      | "·%&ª\'¿ | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | true  |
-    | "·%&ª\'¿             | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | true  |
-    | 1980-03-08T13:00:00Z | "·%&ª\ | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | true  |
-    | 1980-03-08T13:00:00Z | La Paz | "·%&ª\  | Male   | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | "·%&ª\ | Simon Gav | secret1 | user@mail.com | user | "·%&ª\'¿ | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | "·%&ª\ \' | secret1 | user@mail.com | user | "·%&ª\'¿ | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | "·%&ª\  | user@mail.com | user | "·%&ª\'¿ | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | "·%&ª\        | user | "·%&ª\'¿ | true  |
-    | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | "·%& | "·%&ª\'¿ | true  |
+      | BIRTH                | CITY   | COUNTRY | GENDER | NAME      | PASS    | PRI_MAIL      | ROLE | SEC_MAIL | VAL   |
+      |                      | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | false |
+      | 1980-03-08T13:00:00Z |        | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | false |
+      | 1980-03-08T13:00:00Z | La Paz |         | Male   | Simon Gav | secret1 | user@mail.com | user |          | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia |        | Simon Gav | secret1 | user@mail.com | user |          | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   |           | secret1 | user@mail.com | user |          | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav |         | user@mail.com | user |          | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 |               | user |          | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com |      |          | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          |       |
+      |                      |        |         |        |           |         |               |      |          |       |
+      | "·%&ª\'¿             | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | false |
+      | 1980-03-08T13:00:00Z | "·%&ª\ | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | false |
+      | 1980-03-08T13:00:00Z | La Paz | "·%&ª\  | Male   | Simon Gav | secret1 | user@mail.com | user |          | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | "·%&ª\ | Simon Gav | secret1 | user@mail.com | user |          | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | "·%&ª\ \' | secret1 | user@mail.com | user |          | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | "·%&ª\  | user@mail.com | user |          | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | "·%&ª\        | user |          | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | "·%& |          | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | "·%&ª |
+      | "·%&ª\'¿             | "·%&ª\ | "·%&ª\  | "·%&ª\ | "·%&ª\ \' | "·%&ª\  | "·%&ª\        | "·%& |          | "·%&ª |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | false |
+      |                      | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | false |
+      | 1980-03-08T13:00:00Z |        | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | false |
+      | 1980-03-08T13:00:00Z | La Paz |         | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª¿    | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia |        | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   |           | secret1 | user@mail.com | user | ·%&ª\¿   | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav |         | user@mail.com | user | ·%&ª\¿   | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 |               | user | ·%&ª\¿   | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com |      | ·%&ª\¿   | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   |       |
+      |                      |        |         |        |           |         |               |      | ·%&ª\¿   |       |
+      | "·%&ª\'¿             | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | false |
+      | 1980-03-08T13:00:00Z | "·%&ª\ | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | false |
+      | 1980-03-08T13:00:00Z | La Paz | "·%&ª\  | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | "·%&ª\ | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | "·%&ª\ \' | secret1 | user@mail.com | user | ·%&ª\¿   | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | "·%&ª\  | user@mail.com | user | ·%&ª\¿   | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | "·%&ª\        | user | ·%&ª\¿   | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | "·%& | ·%&ª\¿   | false |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | "·%&ª |
+      | "·%&ª\'¿             | "·%&ª\ | "·%&ª\  | "·%&ª\ | "·%&ª\ \' | "·%&ª\  | "·%&ª\        | "·%& | ·%&ª\¿   | "·%&ª |
+      |                      | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | true  |
+      | 1980-03-08T13:00:00Z |        | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | true  |
+      | 1980-03-08T13:00:00Z | La Paz |         | Male   | Simon Gav | secret1 | user@mail.com | user |          | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia |        | Simon Gav | secret1 | user@mail.com | user |          | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   |           | secret1 | user@mail.com | user |          | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav |         | user@mail.com | user |          | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 |               | user |          | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com |      |          | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | true  |
+      | "·%&ª\'¿             | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | true  |
+      | 1980-03-08T13:00:00Z | "·%&ª\ | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user |          | true  |
+      | 1980-03-08T13:00:00Z | La Paz | "·%&ª\  | Male   | Simon Gav | secret1 | user@mail.com | user |          | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | "·%&ª\ | Simon Gav | secret1 | user@mail.com | user |          | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | "·%&ª\ \' | secret1 | user@mail.com | user |          | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | "·%&ª\  | user@mail.com | user |          | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | "·%&ª\        | user |          | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | "·%& |          | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\    | true  |
+      |                      | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | true  |
+      | 1980-03-08T13:00:00Z |        | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | true  |
+      | 1980-03-08T13:00:00Z | La Paz |         | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia |        | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   |           | secret1 | user@mail.com | user | ·%&ª\¿   | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav |         | user@mail.com | user | ·%&ª\¿   | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 |               | user | ·%&ª\¿   | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com |      | ·%&ª\¿   | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | true  |
+      | "·%&ª\'¿             | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | true  |
+      | 1980-03-08T13:00:00Z | "·%&ª\ | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | true  |
+      | 1980-03-08T13:00:00Z | La Paz | "·%&ª\  | Male   | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | "·%&ª\ | Simon Gav | secret1 | user@mail.com | user | ·%&ª\¿   | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | "·%&ª\ \' | secret1 | user@mail.com | user | ·%&ª\¿   | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | "·%&ª\  | user@mail.com | user | ·%&ª\¿   | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | "·%&ª\        | user | ·%&ª\¿   | true  |
+      | 1980-03-08T13:00:00Z | La Paz | Bolivia | Male   | Simon Gav | secret1 | user@mail.com | "·%& | ·%&ª\¿   | true  |

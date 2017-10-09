@@ -32,12 +32,9 @@ Feature: Negative expected for POST an Email
     """
     Examples:
 
-    | USER_ID | EMAIL | VALUE |
-    |         | %$·#" |       |
-    | "#%&    |       |       |
-    |         |       |       |
-    | $"·"    | €#~"= |       |
-    |         | %$·#" | 1234  |
-    | "#%&    |       | 9583  |
-    |         |       | 3455  |
-    | $"·"    | €#~"= | 5667  |
+      | USER_ID                  | EMAIL     |
+      |                          |           |
+      | !$·)%                    | 23533.    |
+      | 59d7e00a9eb6160dee1d7c25 | asdQEF    |
+      | ASDKJHWQIUB2389742119123 | @SDDS.COM |
+      |                          | ..@@      |
