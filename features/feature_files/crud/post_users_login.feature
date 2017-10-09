@@ -8,7 +8,7 @@ Feature: Users login
 
   Scenario: Verify that "/users/login" end point can perform "POST" request
     Given I perform "POST" request to "/users/login"
-    When I set the following custom body:
+    When I set the following custom body and store as "login_request"
       | email    | {user_response.primaryEmail} |
       | password | {user_request.password}      |
       | type     | 0                            |
@@ -19,7 +19,7 @@ Feature: Users login
     And I verify the "login_response" schema with "post_login" template
 
 #    And I build the expected response with following data
-#      | request_name  |                 |
+#      | request_name  | login_request   |
 #      | response_name | emails_response |
 #      | template_name | post_user_email |
 #    Then I verify "clone_surveys_response" with built expected response

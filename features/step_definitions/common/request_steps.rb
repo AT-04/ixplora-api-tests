@@ -30,3 +30,10 @@ end
 And(/^I set the header "([^"]*)" with "(.*)"$/) do |key, value|
   @request.add_header(key, CommonActions.built_data(value))
 end
+
+When(/^I set the following custom body and store as "([^"]*)"$/) do |request_name, table|
+  data = table.rows_hash
+  data = CommonActions.built_json(data)
+  Helper.add_data(request_name, data)
+  @request.add_body(data.to_json)
+end
