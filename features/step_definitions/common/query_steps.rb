@@ -4,5 +4,9 @@ And(/^I run a query to filter the field "([^"]*)" with value "([^"]*)" in "([a-z
 end
 
 And(/^I store the "([^"]*)" of query result as "([^"]*)"$/) do |field, key|
-  Helper.add_data(key, @query_result[field])
+  Helper.add_data(key, @query_result.first[field])
+end
+
+And(/^I store the document query result as "([^"]*)"$/) do |key|
+  Helper.add_data(key, @query_result)
 end

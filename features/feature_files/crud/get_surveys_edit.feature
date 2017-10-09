@@ -17,3 +17,6 @@ Feature: Surveys
     Then I expect a "200" status code
     And I store the response body as "surveys_response_edit"
     And I verify the "surveys_response_edit" schema with "get_surveys_edit" template
+    And I run a query to filter the field "owner" with value "{editor_response._id}" in "surveys"
+    And I store the document query result as "survey_data"
+    Then I verify that "surveys_response_edit" is persisted in MongoDB as "survey_data"
