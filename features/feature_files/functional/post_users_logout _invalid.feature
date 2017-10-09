@@ -13,7 +13,7 @@ Feature: Users logout negative
 
   Scenario Outline: Verify that "/users/logout" end point can perform "POST" request
     Given I perform "POST" request to "/users/logout"
-    When I set the header "Authorization" with "Bearer <VALUE>"
+    When I set the header "Authorization" with "Bearer {login_response.token}"
     When  I set and store the following "user_request_login" body
       """
       {
@@ -31,9 +31,9 @@ Feature: Users logout negative
       }
     """
     Examples:
-      | ID    | VALUE    |
-      |       |          |
-      | !"·)% | %3124    |
-      | &$#!? |          |
-      |       | )%343!   |
+      | ID                       |
+      |                          |
+      | !$·)%                    |
+      | 59d7e00a9eb6160dee1d7c25 |
+      | ASDKJHWQIUB2389742119123 |
 

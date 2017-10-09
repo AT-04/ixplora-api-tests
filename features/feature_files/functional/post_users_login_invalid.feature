@@ -11,7 +11,7 @@ Feature: Users login negative
 
   Scenario Outline: Verify that "/users/login" returns error when send invalid information
     Given I perform "POST" request to "/users/login"
-    When I set the header "Authorization" with "Bearer <VALUE>"
+    When I set the header "Authorization" with "Bearer {login_response.token}"
     When  I set and store the following "user_request_login" body
       """
       {
@@ -33,13 +33,9 @@ Feature: Users login negative
     """
 
     Examples:
-    | EMAIL | PASSWORD | VALUE |
-    |       |          |       |
-    | !"·)% | %&$#!    |       |
-    | &$#!? |          |       |
-    |       | )%"#?!   |       |
-    |       |          |       |
-    | !"·)% | %&$#!    | 42341 |
-    | &$#!? |          | 64534 |
-    |       | )%"#?!   | 45232 |
-    |       |          | 35423 |
+      | EMAIL | PASSWORD |
+      |       |          |
+      | !2)%  | %&$#!    |
+      | &$#!? |          |
+      |       | )%2#?!   |
+      | VQWKM | .        |
