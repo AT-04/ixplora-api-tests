@@ -16,7 +16,7 @@ Feature: Surveys
     Then I expect a "400" status code
     And I store the response body as "surveys_response_get"
     And I verify the "surveys_response_get" schema with "error_response" template
-    Then I verify "user_login_response" with following expected response
+    Then I verify "surveys_response_get" with following expected response
     """
       {
       "statusCode": 400,
