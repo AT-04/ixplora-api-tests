@@ -12,9 +12,11 @@ Feature: User Tokens
     When I set the following custom body:
       | token | mail_token |
     And I send the request
-    Then I expect a "200" status code
+    Then I expect a "201" status code
+    And I store the response body as "token_response"
+    Then I verify schema with "post_token" template and "token_response"
     And I build the expected response with following data
-      | request_name  | survey_request         |
-      | response_name | clone_surveys_response |
-      | template_name | post_token             |
+      | request_name  | user_request   |
+      | response_name | token_response |
+      | template_name | post_token     |
     Then I verify "clone_surveys_response" with built expected response

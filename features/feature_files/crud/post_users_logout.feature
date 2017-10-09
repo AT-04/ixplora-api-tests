@@ -1,3 +1,4 @@
+#This request doesn't have response
 @CRUD
 Feature: Users logout
 
@@ -12,4 +13,3 @@ Feature: Users logout
     Given I perform "POST" request to "/users/logout"
     When I send the request
     Then I expect a "201" status code
-    And I store the response body as "logout_response"

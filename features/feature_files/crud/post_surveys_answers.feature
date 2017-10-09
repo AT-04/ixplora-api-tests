@@ -1,4 +1,3 @@
-#to-do
 @CRUD
 Feature: Surveys answers
 
@@ -53,7 +52,6 @@ Feature: Surveys answers
     And I login to "MOBILE_APP" using "user_response.primaryEmail" and "user_request.password"
     And I store the response body as "login_response"
 
-  #to-do
   Scenario: Verify that "/surveys/{surveyId}/answers" end point can performing "POST" request.
     Given I perform "POST" request to "/surveys/{survey_response._id}/answers"
     And I set the header "Authorization" with "Bearer {login_response.token}"
@@ -61,12 +59,19 @@ Feature: Surveys answers
     """
     {
      "answers": [{
-      "questionId": "59cfe2e95641d906f70bdb15",
+      "questionId": "<survey_response.questions._id>",
       "answers": "1",
       "type": "singleSelection"
      }],
-      "userId": "59cfd3df5641d906f70bdafb"
+      "userId": "<user_request._id>"
     }
     """
     When I send the request
     Then I expect a "201" status code
+    And I store the response body as "answers_response"
+    Then I verify schema with "post_surveys_answers" template and "answers_response"
+    And I build the expected response with following data
+      | request_name  | answers_request  |
+      | response_name | answers_response |
+      | template_name | post_surveys_answers    |
+    Then I verify "post_surveys_answers" with built expected response
