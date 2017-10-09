@@ -1,4 +1,4 @@
-$scheme_get_survey_by_id = { 'type' => 'object',
+$scheme_get_surveys_edit = { 'type' => 'object',
                              'properties' => { '__v' => { 'type' => 'integer' },
                                                '_id' => { 'type' => 'string' },
                                                'audience' => { 'type' => 'integer' },

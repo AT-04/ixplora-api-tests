@@ -4,8 +4,9 @@ Given(/^I perform "(GET|POST|PUT|DELETE)" request to "(.*)"$/) do |method, endpo
 end
 
 When(/^I set and store the following "([^"]*)" body$/) do |request_name, content|
-  Helper.add_data(request_name, JSON.parse(content))
-  @request.add_body(content)
+  custom_json = CommonActions.built_custom_json(content)
+  Helper.add_data(request_name, JSON.parse(custom_json))
+  @request.add_body(custom_json)
 end
 
 When(/^I set the following custom body:$/) do |table|

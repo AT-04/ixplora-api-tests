@@ -14,6 +14,7 @@ namespace 'report_builder' do
     sh 'cucumber -t @Functional f json -o ./reports/functional_report.json'
   end
 end
+
 # rubocop config
 task default: :rubocop
 

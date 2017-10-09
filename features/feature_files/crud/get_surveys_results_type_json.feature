@@ -1,5 +1,5 @@
 @CRUD @Delete_created_data
-Feature: Surveys stats
+Feature: Get Surveys results type json
 
   Background:
     Given I register a new "editor" and I save the request as "editor_request"
@@ -11,15 +11,15 @@ Feature: Surveys stats
     And I store the response body as "survey_response"
     And I change the "survey_response._id" state to "1" with "login_response.token"
 
-  Scenario: Verify that "/surveys/{surveyId}/stats" end point can perform "GET" request.
-    Given I perform "GET" request to "/surveys/{survey_response._id}/stats"
+  Scenario: Verify that "/surveys/{surveyId}/results?type=csv" end point can perform "GET" request.
+    Given I perform "GET" request to "/surveys/{survey_response._id}/results?type=json"
     And I set the header "Authorization" with "Bearer {login_response.token}"
     When I send the request
     Then I expect a "200" status code
-    And I store the response body as "surveys_stats_response"
-    And I verify the "surveys_stats_response" schema with "get_surveys_stats" template
+    And I store the response body as "surveys_result_response"
+    And I verify the "surveys_result_response" schema with "get_surveys_results_json" template
 #    And I build the expected response with following data
-#      | request_name  | survey_request                |
-#      | response_name | surveys_info_response         |
-#      | template_name | get_surveys_without_questions |
-#    Then I verify "surveys_overview_response" with built expected response
+#      | request_name  | survey_request          |
+#      | response_name | surveys_result_response |
+#      | template_name | get_surveys_results_json |
+#    Then I verify "surveys_result_response" with built expected response

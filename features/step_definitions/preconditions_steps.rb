@@ -27,7 +27,7 @@ end
 
 And(/^I validate email using "(.*)"$/) do |user_id|
   steps %(
-    And I run a query to filter the field "userId" with value "{#{user_id}}" to "email_tokens"
+    And I run a query to filter the field "userId" with value "{#{user_id}}" in "email_tokens"
     And I store the "token" of query result as "mail_token"
     And I perform "POST" request to "/tokens"
     And I set the following custom body:
