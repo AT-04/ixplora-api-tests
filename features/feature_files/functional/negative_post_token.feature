@@ -18,7 +18,7 @@ Feature: Token
     }
     """
     When I send the request
-    Then I expect a "400" status code
+    Then I expect a "404" status code
 
     Examples:
       | TOKENS                       |

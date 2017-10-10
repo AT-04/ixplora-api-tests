@@ -18,10 +18,10 @@ Feature: Users logout
       "id": "<ID>"
       }
       """
-    And I store the request body as "user_request_login"
     And I send the request
     Then I expect a "409" status code
-
+    And I store the response body as "logout_response"
+    And I verify "login_response" with following expected response
     """
       {
       "status": "409",

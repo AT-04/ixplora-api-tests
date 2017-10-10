@@ -27,7 +27,11 @@ Then(/^I expect a "(\d+)" status code$/) do |code|
 end
 
 And(/^I store the response body as "([^"]*)"$/) do |type|
-  Helper.add_data(type, JSON.parse(@response.body))
+  if @response.body.include?('DOCTYPE html')
+    Helper.add_data(type, {})
+  else
+    Helper.add_data(type, JSON.parse(@response.body))
+  end
 end
 
 And(/^I set the header "([^"]*)" with "(.*)"$/) do |key, value|

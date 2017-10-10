@@ -11,7 +11,7 @@ Feature: Users email validation
   @delete_created_data
   Scenario Outline: Verify the negative responses after POST the Email
     Given I perform "POST" request to "/users/<USER_ID>/emails"
-    When I set the header "Authorization" with "Bearer <VALUE>"
+    When I set the header "Authorization" with "Bearer {login_response.token}"
     And I set the following body
     """
     {
@@ -35,7 +35,7 @@ Feature: Users email validation
 
       | USER_ID                  | EMAIL     |
       |                          |           |
-      | !$·)%                    | 23533.    |
+      | /*-+-*/                  | 23533.    |
       | 59d7e00a9eb6160dee1d7c25 | asdQEF    |
       | ASDKJHWQIUB2389742119123 | @SDDS.COM |
       |                          | ..@@      |

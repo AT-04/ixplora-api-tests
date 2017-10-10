@@ -8,8 +8,7 @@ Feature: Surveys
     And I login to "MOBILE_APP" using "editor_response.primaryEmail" and "editor_request.password"
     And I store the response body as "login_response"
     And I create a survey using the Authorization "login_response.token"
-    And I store the request body as "survey_request"
-    And I store the response body as "survey_request"
+    And I store the response body as "survey_response"
 
   @delete_created_data
   Scenario Outline: Send with invalid parameters

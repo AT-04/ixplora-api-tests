@@ -54,7 +54,7 @@ Feature: Surveys
     And I store the response body as "login_response"
 
   @delete_created_data
-  Scenario Outline: Verify that "/surveys/{surveyId}/answers" end point can performing "POST" request.
+  Scenario Outline: Verify answers end point can not performing "POST" request with invalid data.
     Given I perform "POST" request to "/surveys/{survey_response._id}/answers"
     And I set the header "Authorization" with "Bearer {login_response.token}"
     When  I set the following body

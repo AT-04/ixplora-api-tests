@@ -27,4 +27,4 @@ Feature: Users
     Examples:
       | USER_ID                  |
       | 59d7e00a9eb6160dee1d7c25 |
-      | ·#%~@#€#@~€@             |
+      | -+*/*-++-++              |

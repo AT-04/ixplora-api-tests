@@ -18,7 +18,8 @@ class Helper
   end
 
   def self.get_stored_field(key, field)
-    @data[key][field]
+    return @data[key][field] if @data[key][field]
+    ''
   end
 
   def self.get_nested_field(key, field, sub_field)
