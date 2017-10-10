@@ -20,6 +20,3 @@ Feature: Users
 #      | response_name | user_info_response |
 #      | template_name | user_creation      |
 #    Then I verify "user_info_response" with built expected response
-    And I run a query to filter the field "_id" with value "{user_response._id}" in "users"
-    And I store the document query result as "user_data"
-    Then I verify that "user_info_response" is persisted in MongoDB as "user_data"
