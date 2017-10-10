@@ -1,0 +1,1524 @@
+[
+  {
+    "uri": "features/feature_files/smoke/health.feature",
+    "id": "server-health",
+    "keyword": "Feature",
+    "name": "Server Health",
+    "description": "",
+    "line": 2,
+    "tags": [
+      {
+        "name": "@smoke",
+        "line": 1
+      }
+    ],
+    "elements": [
+      {
+        "id": "server-health;verify-that-\"/health\"-end-point-can-perform-\"get\"-request.",
+        "keyword": "Scenario",
+        "name": "Verify that \"/health\" end point can perform \"GET\" request.",
+        "description": "",
+        "line": 4,
+        "type": "scenario",
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 1
+          }
+        ],
+        "before": [
+          {
+            "match": {
+              "location": "features/support/hooks/hooks.rb:2"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 42773
+            }
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I perform \"GET\" request to \"/health\"",
+            "line": 5,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 89824
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I send the request",
+            "line": 6,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 26442568
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "I expect a \"200\" status code",
+            "line": 7,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4039528
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 38496
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "uri": "features/feature_files/smoke/surveys.feature",
+    "id": "survey",
+    "keyword": "Feature",
+    "name": "Survey",
+    "description": "",
+    "line": 2,
+    "tags": [
+      {
+        "name": "@smoke",
+        "line": 1
+      },
+      {
+        "name": "@delete_created_data",
+        "line": 1
+      }
+    ],
+    "elements": [
+      {
+        "keyword": "Background",
+        "name": "",
+        "description": "",
+        "line": 4,
+        "type": "background",
+        "before": [
+          {
+            "match": {
+              "location": "features/support/hooks/hooks.rb:2"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 21386
+            }
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I register a new \"user\" and I save the request as \"user_request\"",
+            "line": 5,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 844510259
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I store the response body as \"user_response\"",
+            "line": 6,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 81270
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I validate email using \"user_response._id\"",
+            "line": 7,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 147355935
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I login to \"MOBILE_APP\" using \"user_response.primaryEmail\" and \"user_request.password\"",
+            "line": 8,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 100734122
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I store the response body as \"login_response\"",
+            "line": 9,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 126610
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I create a survey with \"login_response.token\" and I save the request as \"survey_request\"",
+            "line": 10,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:53"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 51206277
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I store the response body as \"survey_response\"",
+            "line": 11,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 69721
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I change the \"survey_response._id\" state to \"1\" with \"login_response.token\"",
+            "line": 12,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:80"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30861069
+            }
+          }
+        ]
+      },
+      {
+        "id": "survey;verify-that-\"/surveys\"-end-point-can-perform-\"get\"-request.;;2",
+        "keyword": "Scenario Outline",
+        "name": "Verify that \"/surveys\" end point can perform \"GET\" request.",
+        "description": "",
+        "line": 21,
+        "type": "scenario",
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 1
+          },
+          {
+            "name": "@delete_created_data",
+            "line": 1
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I perform \"GET\" request to \"/surveys\"",
+            "line": 21,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 91963
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I set the header \"Authorization\" with \"Bearer {login_response.token}\"",
+            "line": 21,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 48761
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I send the request",
+            "line": 21,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35665814
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "I expect a \"200\" status code",
+            "line": 21,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 77420
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/hooks/hooks.rb:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 161533207
+            }
+          },
+          {
+            "match": {
+              "location": "json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 40634
+            }
+          }
+        ]
+      },
+      {
+        "keyword": "Background",
+        "name": "",
+        "description": "",
+        "line": 4,
+        "type": "background",
+        "before": [
+          {
+            "match": {
+              "location": "features/support/hooks/hooks.rb:2"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 25236
+            }
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I register a new \"user\" and I save the request as \"user_request\"",
+            "line": 5,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 119678070
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I store the response body as \"user_response\"",
+            "line": 6,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 146285
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I validate email using \"user_response._id\"",
+            "line": 7,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 65961417
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I login to \"MOBILE_APP\" using \"user_response.primaryEmail\" and \"user_request.password\"",
+            "line": 8,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 117078297
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I store the response body as \"login_response\"",
+            "line": 9,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 117199
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I create a survey with \"login_response.token\" and I save the request as \"survey_request\"",
+            "line": 10,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:53"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 50675030
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I store the response body as \"survey_response\"",
+            "line": 11,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 117200
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I change the \"survey_response._id\" state to \"1\" with \"login_response.token\"",
+            "line": 12,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:80"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45034063
+            }
+          }
+        ]
+      },
+      {
+        "id": "survey;verify-that-\"/surveys\"-end-point-can-perform-\"get\"-request.;;3",
+        "keyword": "Scenario Outline",
+        "name": "Verify that \"/surveys\" end point can perform \"GET\" request.",
+        "description": "",
+        "line": 22,
+        "type": "scenario",
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 1
+          },
+          {
+            "name": "@delete_created_data",
+            "line": 1
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I perform \"GET\" request to \"/surveys/{survey_response._id}\"",
+            "line": 22,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 84264
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I set the header \"Authorization\" with \"Bearer {login_response.token}\"",
+            "line": 22,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 60311
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I send the request",
+            "line": 22,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14066916
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "I expect a \"200\" status code",
+            "line": 22,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 165533
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/hooks/hooks.rb:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 167363660
+            }
+          },
+          {
+            "match": {
+              "location": "json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 38924
+            }
+          }
+        ]
+      },
+      {
+        "keyword": "Background",
+        "name": "",
+        "description": "",
+        "line": 4,
+        "type": "background",
+        "before": [
+          {
+            "match": {
+              "location": "features/support/hooks/hooks.rb:2"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 25236
+            }
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I register a new \"user\" and I save the request as \"user_request\"",
+            "line": 5,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 116744664
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I store the response body as \"user_response\"",
+            "line": 6,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 139014
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I validate email using \"user_response._id\"",
+            "line": 7,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 52202899
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I login to \"MOBILE_APP\" using \"user_response.primaryEmail\" and \"user_request.password\"",
+            "line": 8,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 100462938
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I store the response body as \"login_response\"",
+            "line": 9,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 99662
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I create a survey with \"login_response.token\" and I save the request as \"survey_request\"",
+            "line": 10,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:53"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46295025
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I store the response body as \"survey_response\"",
+            "line": 11,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 239104
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I change the \"survey_response._id\" state to \"1\" with \"login_response.token\"",
+            "line": 12,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:80"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 36337786
+            }
+          }
+        ]
+      },
+      {
+        "id": "survey;verify-that-\"/surveys\"-end-point-can-perform-\"get\"-request.;;4",
+        "keyword": "Scenario Outline",
+        "name": "Verify that \"/surveys\" end point can perform \"GET\" request.",
+        "description": "",
+        "line": 23,
+        "type": "scenario",
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 1
+          },
+          {
+            "name": "@delete_created_data",
+            "line": 1
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I perform \"GET\" request to \"/surveys/{survey_response._id}/edit\"",
+            "line": 23,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 72715
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I set the header \"Authorization\" with \"Bearer {login_response.token}\"",
+            "line": 23,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 49189
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I send the request",
+            "line": 23,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29280161
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "I expect a \"200\" status code",
+            "line": 23,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 82125
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/hooks/hooks.rb:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 167708842
+            }
+          },
+          {
+            "match": {
+              "location": "json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 39779
+            }
+          }
+        ]
+      },
+      {
+        "keyword": "Background",
+        "name": "",
+        "description": "",
+        "line": 4,
+        "type": "background",
+        "before": [
+          {
+            "match": {
+              "location": "features/support/hooks/hooks.rb:2"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23953
+            }
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I register a new \"user\" and I save the request as \"user_request\"",
+            "line": 5,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 116135998
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I store the response body as \"user_response\"",
+            "line": 6,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 125754
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I validate email using \"user_response._id\"",
+            "line": 7,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 62655882
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I login to \"MOBILE_APP\" using \"user_response.primaryEmail\" and \"user_request.password\"",
+            "line": 8,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 101816290
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I store the response body as \"login_response\"",
+            "line": 9,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 109928
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I create a survey with \"login_response.token\" and I save the request as \"survey_request\"",
+            "line": 10,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:53"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 49440159
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I store the response body as \"survey_response\"",
+            "line": 11,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 69721
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I change the \"survey_response._id\" state to \"1\" with \"login_response.token\"",
+            "line": 12,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:80"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31048845
+            }
+          }
+        ]
+      },
+      {
+        "id": "survey;verify-that-\"/surveys\"-end-point-can-perform-\"get\"-request.;;5",
+        "keyword": "Scenario Outline",
+        "name": "Verify that \"/surveys\" end point can perform \"GET\" request.",
+        "description": "",
+        "line": 24,
+        "type": "scenario",
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 1
+          },
+          {
+            "name": "@delete_created_data",
+            "line": 1
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I perform \"GET\" request to \"/surveys/{survey_response._id}/overview\"",
+            "line": 24,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 65871
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I set the header \"Authorization\" with \"Bearer {login_response.token}\"",
+            "line": 24,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 42346
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I send the request",
+            "line": 24,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35668808
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "I expect a \"200\" status code",
+            "line": 24,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 78703
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/hooks/hooks.rb:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 177151089
+            }
+          },
+          {
+            "match": {
+              "location": "json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 40207
+            }
+          }
+        ]
+      },
+      {
+        "keyword": "Background",
+        "name": "",
+        "description": "",
+        "line": 4,
+        "type": "background",
+        "before": [
+          {
+            "match": {
+              "location": "features/support/hooks/hooks.rb:2"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 38496
+            }
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I register a new \"user\" and I save the request as \"user_request\"",
+            "line": 5,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 135326321
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I store the response body as \"user_response\"",
+            "line": 6,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 135164
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I validate email using \"user_response._id\"",
+            "line": 7,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 63862950
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I login to \"MOBILE_APP\" using \"user_response.primaryEmail\" and \"user_request.password\"",
+            "line": 8,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 121705533
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I store the response body as \"login_response\"",
+            "line": 9,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 101801
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I create a survey with \"login_response.token\" and I save the request as \"survey_request\"",
+            "line": 10,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:53"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43937778
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I store the response body as \"survey_response\"",
+            "line": 11,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 89396
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I change the \"survey_response._id\" state to \"1\" with \"login_response.token\"",
+            "line": 12,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:80"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30923946
+            }
+          }
+        ]
+      },
+      {
+        "id": "survey;verify-that-\"/surveys\"-end-point-can-perform-\"get\"-request.;;6",
+        "keyword": "Scenario Outline",
+        "name": "Verify that \"/surveys\" end point can perform \"GET\" request.",
+        "description": "",
+        "line": 25,
+        "type": "scenario",
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 1
+          },
+          {
+            "name": "@delete_created_data",
+            "line": 1
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I perform \"GET\" request to \"/surveys/{survey_response._id}/results?type=json\"",
+            "line": 25,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 71004
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I set the header \"Authorization\" with \"Bearer {login_response.token}\"",
+            "line": 25,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 57744
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I send the request",
+            "line": 25,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 67080800
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "I expect a \"200\" status code",
+            "line": 25,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 88541
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/hooks/hooks.rb:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 167356817
+            }
+          },
+          {
+            "match": {
+              "location": "json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 34646
+            }
+          }
+        ]
+      },
+      {
+        "keyword": "Background",
+        "name": "",
+        "description": "",
+        "line": 4,
+        "type": "background",
+        "before": [
+          {
+            "match": {
+              "location": "features/support/hooks/hooks.rb:2"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 19676
+            }
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I register a new \"user\" and I save the request as \"user_request\"",
+            "line": 5,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 102013049
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I store the response body as \"user_response\"",
+            "line": 6,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 136875
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I validate email using \"user_response._id\"",
+            "line": 7,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 61307235
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I login to \"MOBILE_APP\" using \"user_response.primaryEmail\" and \"user_request.password\"",
+            "line": 8,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 121392431
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I store the response body as \"login_response\"",
+            "line": 9,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 97096
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I create a survey with \"login_response.token\" and I save the request as \"survey_request\"",
+            "line": 10,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:53"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46439599
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I store the response body as \"survey_response\"",
+            "line": 11,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 136876
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I change the \"survey_response._id\" state to \"1\" with \"login_response.token\"",
+            "line": 12,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:80"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 52085272
+            }
+          }
+        ]
+      },
+      {
+        "id": "survey;verify-that-\"/surveys\"-end-point-can-perform-\"get\"-request.;;7",
+        "keyword": "Scenario Outline",
+        "name": "Verify that \"/surveys\" end point can perform \"GET\" request.",
+        "description": "",
+        "line": 26,
+        "type": "scenario",
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 1
+          },
+          {
+            "name": "@delete_created_data",
+            "line": 1
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I perform \"GET\" request to \"/surveys/{survey_response._id}/results?type=csv\"",
+            "line": 26,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 79559
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I set the header \"Authorization\" with \"Bearer {login_response.token}\"",
+            "line": 26,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 53894
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I send the request",
+            "line": 26,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29523114
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "I expect a \"200\" status code",
+            "line": 26,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 114632
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/hooks/hooks.rb:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 167592926
+            }
+          },
+          {
+            "match": {
+              "location": "json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43629
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "uri": "features/feature_files/smoke/users.feature",
+    "id": "users",
+    "keyword": "Feature",
+    "name": "Users",
+    "description": "",
+    "line": 2,
+    "tags": [
+      {
+        "name": "@smoke",
+        "line": 1
+      },
+      {
+        "name": "@delete_created_data",
+        "line": 1
+      }
+    ],
+    "elements": [
+      {
+        "keyword": "Background",
+        "name": "",
+        "description": "",
+        "line": 4,
+        "type": "background",
+        "before": [
+          {
+            "match": {
+              "location": "features/support/hooks/hooks.rb:2"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27375
+            }
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I register a new \"user\" and I save the request as \"user_request\"",
+            "line": 5,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 117893132
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I store the response body as \"user_response\"",
+            "line": 6,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 479063
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I validate email using \"user_response._id\"",
+            "line": 7,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 63600321
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I login to \"MOBILE_APP\" using \"user_response.primaryEmail\" and \"user_request.password\"",
+            "line": 8,
+            "match": {
+              "location": "features/step_definitions/preconditions_steps.rb:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 117374718
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I store the response body as \"login_response\"",
+            "line": 9,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 57744
+            }
+          }
+        ]
+      },
+      {
+        "id": "users;verify-that-\"/users/{userid}\"-end-point-can-perform-\"get\"-request.",
+        "keyword": "Scenario",
+        "name": "Verify that \"/users/{userId}\" end point can perform \"GET\" request.",
+        "description": "",
+        "line": 11,
+        "type": "scenario",
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 1
+          },
+          {
+            "name": "@delete_created_data",
+            "line": 1
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I perform \"GET\" request to \"/users/{user_response._id}\"",
+            "line": 12,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 63305
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I set the header \"Authorization\" with \"Bearer {login_response.token}\"",
+            "line": 13,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 48334
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I send the request",
+            "line": 14,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29337477
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "I expect a \"200\" status code",
+            "line": 15,
+            "match": {
+              "location": "features/step_definitions/common/request_steps.rb:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 79987
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/hooks/hooks.rb:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 83578105
+            }
+          },
+          {
+            "match": {
+              "location": "json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 52183
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

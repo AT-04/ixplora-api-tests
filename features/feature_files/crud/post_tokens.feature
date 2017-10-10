@@ -1,4 +1,4 @@
-@crud @Delete_created_data
+@crud @delete_created_data
 Feature: User Tokens
 
   Background:
@@ -14,7 +14,7 @@ Feature: User Tokens
     And I send the request
     Then I expect a "201" status code
     And I store the response body as "token_response"
-    And I verify the "token_response" schema with "post_token" template
+    And I verify the "token_response" schema with "post_tokens" template
 #    And I build the expected response with following data
 #      | request_name  | survey_request         |
 #      | response_name | clone_surveys_response |

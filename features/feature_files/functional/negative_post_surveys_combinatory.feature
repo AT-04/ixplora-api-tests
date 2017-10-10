@@ -1,4 +1,4 @@
-@functional @Delete_created_data
+@functional @delete_created_data
 Feature: Surveys
 
   Background:

@@ -1,4 +1,4 @@
-@crud @Delete_created_data
+@crud @delete_created_data
 Feature: Modify Surveys
 
   Background:

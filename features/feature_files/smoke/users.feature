@@ -1,4 +1,4 @@
-@smoke @Delete_created_data
+@smoke @delete_created_data
 Feature: Users
 
   Background:

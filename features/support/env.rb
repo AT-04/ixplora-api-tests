@@ -11,10 +11,9 @@ require 'pathname'
 require 'faker'
 
 require_relative './env_files/load_global_variables.rb'
-require_relative './schema_files/load_schema_variables.rb'
 require_relative './utils/helper'
-require_relative './db_connections/cassandra_connection'
-require_relative './db_connections/mongodb_connection'
+require_relative 'utils/db_connections/cassandra_connection'
+require_relative 'utils/db_connections/mongodb_connection'
 
 Helper.initialize
 CassandraConnection.initialize

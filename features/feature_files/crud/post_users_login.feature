@@ -1,4 +1,4 @@
-@crud @Delete_created_data
+@crud @delete_created_data
 Feature: Users login
 
   Background:
@@ -16,7 +16,7 @@ Feature: Users login
     And I send the request
     Then I expect a "201" status code
     And I store the response body as "login_response"
-    And I verify the "login_response" schema with "post_login" template
+    And I verify the "login_response" schema with "post_users_login" template
 
 #    And I build the expected response with following data
 #      | request_name  | login_request   |

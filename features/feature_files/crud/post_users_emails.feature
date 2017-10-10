@@ -1,4 +1,4 @@
-@crud @Delete_created_data
+@crud @delete_created_data
 Feature: User email
 
   Background:
@@ -16,7 +16,7 @@ Feature: User email
     When I send the request
     Then I expect a "201" status code
     And I store the response body as "emails_response"
-    And I verify the "emails_response" schema with "post_user_email" template
+    And I verify the "emails_response" schema with "post_users_emails" template
 #    And I build the expected response with following data
 #      | request_name  | user_request    |
 #      | response_name | emails_response |

@@ -4,13 +4,14 @@ require 'cucumber'
 require 'cucumber/rake/task'
 require 'report_builder'
 
-# report builder tasks
+# Report builder tasks
 desc 'Task to build the json report'
-task :json_report, [:tag] do |t, args|
+task :json_report, [:tag] do |_t, args|
   sh "cucumber -t @#{args.tag} -f json -o features/reports/#{args.tag}/report.json"
 end
+
 desc 'Task to build the html report'
-task :html_report, [:tag] do |t, args|
+task :html_report, [:tag] do |_t, args|
   ReportBuilder.configure do |config|
     config.json_path = "features/reports/#{args.tag}/"
     config.report_path = "features/reports/#{args.tag}/report"
@@ -20,11 +21,13 @@ task :html_report, [:tag] do |t, args|
   end
   ReportBuilder.build_report
 end
-task :reports, [:tag] do |t, args|
+
+task :reports, [:tag] do |_t, args|
   sh "rake json_report['#{args.tag}']"
   sh "rake html_report['#{args.tag}']"
 end
-# rubocop config
+
+# Rubocop default inspection task for Travis CI
 task default: :rubocop
 
 task :rubocop do

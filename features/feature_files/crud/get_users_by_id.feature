@@ -1,4 +1,4 @@
-@crud @Delete_created_data
+@crud @delete_created_data
 Feature: Users
 
   Background:
@@ -14,7 +14,7 @@ Feature: Users
     And I send the request
     Then I expect a "200" status code
     And I store the response body as "user_info_response"
-    And I verify the "user_info_response" schema with "get_user_id" template
+    And I verify the "user_info_response" schema with "get_users_by_id" template
 #    And I build the expected response with following data
 #      | request_name  | user_request       |
 #      | response_name | user_info_response |

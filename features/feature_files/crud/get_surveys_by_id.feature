@@ -1,4 +1,4 @@
-@crud @Delete_created_data
+@crud @delete_created_data
 Feature: Surveys
 
   Background:
@@ -17,7 +17,7 @@ Feature: Surveys
     When I send the request
     Then I expect a "200" status code
     And I store the response body as "surveys_response_get"
-    And I verify the "surveys_response_get" schema with "post_survey" template
+    And I verify the "surveys_response_get" schema with "get_surveys_by_id" template
 #    And I build the expected response with following data
 #      | request_name  | survey_request       |
 #      | response_name | surveys_response_get |
