@@ -3,10 +3,13 @@ Given(/^I perform "(GET|POST|PUT|DELETE)" request to "(.*)"$/) do |method, endpo
   @request.append_endpoint(endpoint)
 end
 
-When(/^I set and store the following "([^"]*)" body$/) do |request_name, content|
-  custom_json = CommonActions.built_custom_json(content)
-  Helper.add_data(request_name, JSON.parse(custom_json))
-  @request.add_body(custom_json)
+When(/^I set the following body$/) do |content|
+  @custom_json = CommonActions.built_custom_json(content)
+  @request.add_body(@custom_json)
+end
+
+And(/^I store the request body as "([^"]*)"$/) do |type|
+  Helper.add_data(type, JSON.parse(@custom_json))
 end
 
 When(/^I set the following custom body:$/) do |table|

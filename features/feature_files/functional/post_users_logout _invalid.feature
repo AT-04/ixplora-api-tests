@@ -14,12 +14,13 @@ Feature: Users logout negative
   Scenario Outline: Verify that "/users/logout" end point can perform "POST" request
     Given I perform "POST" request to "/users/logout"
     When I set the header "Authorization" with "Bearer {login_response.token}"
-    When  I set and store the following "user_request_login" body
+    When  I set the following body
       """
       {
       "id": "<ID>"
       }
       """
+    And I store the request body as "user_request_login"
     And I send the request
     Then I expect a "409" status code
 

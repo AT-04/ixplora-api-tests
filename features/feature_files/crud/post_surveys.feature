@@ -11,7 +11,7 @@ Feature: Surveys
   Scenario: Verify that "/surveys" end point can perform "POST" request
     Given I perform "POST" request to "/surveys"
     When I set the header "Authorization" with "Bearer {login_response.token}"
-    And  I set and store the following "survey_request" body
+    And  I set the following body
     """
     {
       "_id": "",
@@ -45,6 +45,7 @@ Feature: Surveys
       }]
     }
     """
+    And I store the request body as "survey_request"
     And I send the request
     Then I expect a "201" status code
     And I store the response body as "survey_response"

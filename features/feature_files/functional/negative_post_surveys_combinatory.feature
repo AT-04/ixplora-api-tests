@@ -7,12 +7,13 @@ Feature: Surveys
     And I validate email using "editor_response._id"
     And I login to "MOBILE_APP" using "editor_response.primaryEmail" and "editor_request.password"
     And I store the response body as "login_response"
-    And I create a survey with "login_response.token" and I save the request as "survey_request"
+    And I create a survey using the Authorization "login_response.token"
+    And I store the request body as "survey_request"
 
   Scenario Outline: Invalid Authorization
     Given I perform "POST" request to "/surveys"
     When I set the header "Authorization" with "Bearer {login_response.token}"
-    And  I set and store the following "survey_request" body
+    And  I set the following body
     """
      {
       "_id": "<ID>",
@@ -28,6 +29,7 @@ Feature: Surveys
       "questions": []
     }
     """
+    And I store the request body as "survey_request"
     And I send the request
     Then I expect a "400" status code
     And I store the response body as "surveys_response"

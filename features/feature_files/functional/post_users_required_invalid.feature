@@ -4,7 +4,7 @@ Feature: Create a new user with blank or invalid information
 
   Scenario Outline: Verify the negative responses after POST a new user
     Given I perform "POST" request to "/users"
-    When  I set and store the following "user_request" body
+    When  I set the following body
     """
     {
       "birthDate": "<BIRTH>",
@@ -22,6 +22,7 @@ Feature: Create a new user with blank or invalid information
 
     }
     """
+    And I store the request body as "user_request"
     And I send the request
     Then I expect a "400" status code
     And I store the response body as "user_response"

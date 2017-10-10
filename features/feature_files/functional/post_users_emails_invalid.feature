@@ -12,12 +12,13 @@ Feature: Negative expected for POST an Email
   Scenario Outline: Verify the negative responses after POST the Email
     Given I perform "POST" request to "/users/<USER_ID>/emails"
     When I set the header "Authorization" with "Bearer <VALUE>"
-    And I set and store the following "user_request_email" body
+    And I set the following body
     """
     {
       "email": "<EMAIL>"
     }
     """
+    And I store the request body as "user_request_email"
     And I send the request
     Then I expect a "404" status code
     And I store the response body as "email_response_post"

@@ -4,7 +4,7 @@ Given(/^I register a new "(user|editor)" and I save the request as "([^"]*)"$/) 
 
   steps %(
    Given I perform "POST" request to "/users"
-    When  I set and store the following "#{user_request}" body
+    When  I set the following body
     """
     {
      "_id": "",
@@ -20,6 +20,7 @@ Given(/^I register a new "(user|editor)" and I save the request as "([^"]*)"$/) 
      "role": "#{user_type}"
     }
     """
+    And I store the request body as "#{user_request}"
     And I send the request
     Then I expect a "201" status code
   )
@@ -50,13 +51,13 @@ And(/^I login to "(MOBILE_APP|WEB_APP)" using "(.*)" and "(.*)"$/) do |app_name,
   )
 end
 
-When(/^I create a survey with "([^"]*)" and I save the request as "([^"]*)"$/) do |login_response, survey_request|
+When(/^I create a survey using the Authorization "([^"]*)"$/) do |login_response|
   survey_title = Faker::Educator.course
   survey_description = Faker::Lorem.sentence
   steps %(
     And I perform "POST" request to "/surveys"
     And I set the header "Authorization" with "Bearer {#{login_response}}"
-    When  I set and store the following "#{survey_request}" body
+    When I set the following body
     """
     {
       "_id": "",

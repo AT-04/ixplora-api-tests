@@ -12,13 +12,14 @@ Feature: Users login negative
   Scenario Outline: Verify that "/users/login" returns error when send invalid information
     Given I perform "POST" request to "/users/login"
     When I set the header "Authorization" with "Bearer {login_response.token}"
-    When  I set and store the following "user_request_login" body
+    When  I set the following body
       """
       {
        "email": "<EMAIL>",
        "password": "<PASSWORD>"
       }
       """
+    And I store the request body as "user_request_login"
     And I send the request
     Then I expect a "400" status code
     And I store the response body as "login_response"

@@ -3,7 +3,7 @@ Feature: Create a new user
 
   Scenario: Verify that "/users" end point can perform "POST" request
     Given I perform "POST" request to "/users"
-    When  I set and store the following "user_request" body
+    When  I set the following body
     """
     {
      "_id": "",
@@ -19,6 +19,7 @@ Feature: Create a new user
      "role": "user"
     }
     """
+    And I store the request body as "user_request"
     And I send the request
     Then I expect a "201" status code
     And I store the response body as "user_response"

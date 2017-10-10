@@ -7,13 +7,14 @@ Feature: Modify Surveys
     And I validate email using "editor_response._id"
     And I login to "WEB_APP" using "editor_response.primaryEmail" and "editor_request.password"
     And I store the response body as "login_response"
-    And I create a survey with "login_response.token" and I save the request as "survey_request"
+    And I create a survey using the Authorization "login_response.token"
+    And I store the request body as "survey_request"
     And I store the response body as "survey_response"
 
   Scenario: Verify that "/surveys/{surveyId}" end point can perform "PUT" request.
     Given I perform "PUT" request to "/surveys/{survey_response._id}"
     And I set the header "Authorization" with "Bearer {login_response.token}"
-    And I set and store the following "survey_put_request" body
+    And I set the following body
     """
     {
       "_id": "<{survey_response._id}>",
@@ -47,6 +48,7 @@ Feature: Modify Surveys
       }]
     }
     """
+    And I store the request body as "survey_put_request"
     When I send the request
     Then I expect a "200" status code
     And I store the response body as "surveys_put_response"
