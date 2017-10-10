@@ -21,6 +21,10 @@ class Helper
     @data[key][field]
   end
 
+  def self.get_nested_field(key, field, sub_field)
+    @data[key][field].first[sub_field]
+  end
+
   def self.obtain_data
     @data
   end

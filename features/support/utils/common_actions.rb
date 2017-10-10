@@ -4,7 +4,12 @@ module CommonActions
     param = input[/(?<=[{])[a-zA-Z_.]+(?=[}])/]
     if param
       param = param.split('.')
-      input.sub!(/(?:[{])[a-zA-Z_.]+(?:[}])/, Helper.get_stored_field(param.first, param.last))
+      value = if param.size > 2
+                Helper.get_nested_field(param.shift, param.shift, param.shift)
+              else
+                Helper.get_stored_field(param.first, param.last)
+              end
+      input.sub!(/(?:[{])[a-zA-Z_.]+(?:[}])/, value)
     end
     input
   end
