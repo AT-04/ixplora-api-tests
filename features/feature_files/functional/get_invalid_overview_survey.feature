@@ -1,4 +1,4 @@
-@Function
+@Function @delete_created_data
 Feature: Get Surveys overview error with invalid information
 
   Background:

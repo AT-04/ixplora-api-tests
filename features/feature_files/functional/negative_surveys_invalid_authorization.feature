@@ -1,4 +1,4 @@
-@functional
+@functional @delete_created_data
 Feature: Surveys
 
   Scenario Outline: Invalid Authorization

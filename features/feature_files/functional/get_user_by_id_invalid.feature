@@ -1,4 +1,4 @@
-@functional
+@functional @delete_created_data
 Feature: Users get by Id as a negative
 
   Background:

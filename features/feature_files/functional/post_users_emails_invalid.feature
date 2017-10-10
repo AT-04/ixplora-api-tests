@@ -1,4 +1,4 @@
-@functional
+@functional @delete_created_data
 #TODO
 Feature: Negative expected for POST an Email
 

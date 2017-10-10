@@ -1,4 +1,4 @@
-@functional
+@functional @delete_created_data
 
   #todo
 Feature: Users logout negative

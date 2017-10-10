@@ -1,4 +1,4 @@
-@funcional
+@functional @delete_created_data
 Feature: Surveys stats invalid Id
 
   Background:

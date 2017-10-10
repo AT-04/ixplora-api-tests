@@ -1,4 +1,4 @@
-@functional
+@functional @delete_created_data
 
 Feature: Create a new user with blank or invalid information
 
