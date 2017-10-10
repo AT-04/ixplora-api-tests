@@ -1,4 +1,4 @@
-@functional @delete_created_data
+@functional
 Feature: Survey results
 
   Background:
@@ -11,6 +11,7 @@ Feature: Survey results
     And I store the request body as "survey_request"
     And I store the response body as "survey_request"
 
+  @delete_created_data
   Scenario Outline: Send with invalid parameters
     Given I perform "GET" request to "/surveys/<SURVEY_ID>/results?type=<TYPE>"
     When I set the header "Authorization" with "Bearer {login_response.token}"
@@ -23,5 +24,3 @@ Feature: Survey results
       |{survey_response._id}    |       csv1      |
       |{survey_response._id}    |                 |
       |{survey_response._id}    |        123      |
-
-

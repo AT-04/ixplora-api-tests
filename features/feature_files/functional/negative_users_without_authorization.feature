@@ -1,4 +1,4 @@
-@functional @delete_created_data
+@functional
 Feature: Users
 
   @delete_created_data

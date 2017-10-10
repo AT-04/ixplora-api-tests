@@ -1,6 +1,7 @@
-@functional @delete_created_data
+@functional
 Feature: Surveys
 
+  @delete_created_data
   Scenario Outline: Without Authorization
     Given I perform "<REQUEST>" request to "<END_POINT>"
     And I send the request

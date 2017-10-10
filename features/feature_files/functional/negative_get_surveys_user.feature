@@ -1,4 +1,4 @@
-@functional @delete_created_data
+@functional
 Feature: Surveys
 
   Background:
@@ -10,6 +10,7 @@ Feature: Surveys
     And I create a survey using the Authorization "login_response.token"
     And I store the request body as "survey_request"
 
+  @delete_created_data
   Scenario: Authorization of normal user (non editor)
     Given I perform "GET" request to "/surveys"
     When I set the header "Authorization" with "Bearer {login_response.token}"

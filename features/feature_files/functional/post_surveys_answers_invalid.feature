@@ -1,4 +1,4 @@
-@functional @delete_created_data
+@functional
 Feature: Surveys answers whit invalid information
 
   Background:
@@ -53,6 +53,7 @@ Feature: Surveys answers whit invalid information
     And I login to "MOBILE_APP" using "user_response.primaryEmail" and "user_request.password"
     And I store the response body as "login_response"
 
+  @delete_created_data
   Scenario Outline: Verify that "/surveys/{surveyId}/answers" end point can performing "POST" request.
     Given I perform "POST" request to "/surveys/{survey_response._id}/answers"
     And I set the header "Authorization" with "Bearer {login_response.token}"

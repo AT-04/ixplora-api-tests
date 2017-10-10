@@ -1,4 +1,4 @@
-@Function @delete_created_data
+@functional
 Feature: Get Surveys overview error with invalid information
 
   Background:
@@ -12,6 +12,7 @@ Feature: Get Surveys overview error with invalid information
     And I store the response body as "survey_response"
     And I change the "survey_response._id" state to "1" with "login_response.token"
 
+  @delete_created_data
   Scenario Outline: Verify that "/surveys/{surveyId}/overview" endpoint show an error whit invalid id survey
     Given I perform "GET" request to "/surveys/<SURVEY_ID>/overview"
     And I set the header "Authorization" with "Bearer {login_response.token}"
@@ -20,7 +21,6 @@ Feature: Get Surveys overview error with invalid information
     And I store the response body as "surveys_overview_response"
     And I verify the "surveys_overview_response" schema with "error_response" template
     Then I verify "surveys_overview_response" with following expected response
-
     """
     {
     "statusCode": 404,
@@ -32,3 +32,4 @@ Feature: Get Surveys overview error with invalid information
       | 89761230    |
       | safmnASFSDF |
       |             |
+    

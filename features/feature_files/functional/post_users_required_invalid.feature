@@ -1,7 +1,7 @@
-@functional @delete_created_data
-
+@functional
 Feature: Create a new user with blank or invalid information
 
+  @delete_created_data
   Scenario Outline: Verify the negative responses after POST a new user
     Given I perform "POST" request to "/users"
     When  I set the following body

@@ -1,4 +1,4 @@
-@functional @delete_created_data
+@functional
 Feature: Users login negative
 
   Background:
@@ -8,7 +8,7 @@ Feature: Users login negative
     And I login to "MOBILE_APP" using "user_response.primaryEmail" and "user_request.password"
     And I store the response body as "login_response"
 
-
+  @delete_created_data
   Scenario Outline: Verify that "/users/login" returns error when send invalid information
     Given I perform "POST" request to "/users/login"
     When I set the header "Authorization" with "Bearer {login_response.token}"

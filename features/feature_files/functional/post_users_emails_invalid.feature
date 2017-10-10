@@ -1,5 +1,4 @@
-@functional @delete_created_data
-#TODO
+@functional
 Feature: Negative expected for POST an Email
 
   Background:
@@ -9,6 +8,7 @@ Feature: Negative expected for POST an Email
     And I login to "MOBILE_APP" using "user_response.primaryEmail" and "user_request.password"
     And I store the response body as "login_response"
 
+  @delete_created_data
   Scenario Outline: Verify the negative responses after POST the Email
     Given I perform "POST" request to "/users/<USER_ID>/emails"
     When I set the header "Authorization" with "Bearer <VALUE>"

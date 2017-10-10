@@ -1,4 +1,4 @@
-@functional @delete_created_data
+@functional
 Feature: Surveys stats invalid Id
 
   Background:
@@ -12,6 +12,7 @@ Feature: Surveys stats invalid Id
     And I store the response body as "survey_response"
     And I change the "survey_response._id" state to "1" with "login_response.token"
 
+  @delete_created_data
   Scenario Outline: Verify that "/surveys/{surveyId}/stats" end point can perform "GET" request.
     Given I perform "GET" request to "/surveys/<SURVEY_ID>/stats"
     And I set the header "Authorization" with "Bearer {login_response.token}"

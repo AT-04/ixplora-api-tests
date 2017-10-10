@@ -1,4 +1,4 @@
-@functional @delete_created_data
+@functional
 Feature: Users get by Id as a negative
 
   Background:
@@ -8,6 +8,7 @@ Feature: Users get by Id as a negative
     And I login to "MOBILE_APP" using "user_response.primaryEmail" and "user_request.password"
     And I store the response body as "login_response"
 
+  @delete_created_data
   Scenario Outline: Verify that user is not "GET" with invalid information
     Given I perform "GET" request to "/users/<USER_ID>"
     When I set the header "Authorization" with "bearer {login_response.token}"

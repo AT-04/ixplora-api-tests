@@ -1,6 +1,7 @@
-@functional @delete_created_data
+@functional
 Feature: Surveys
 
+  @delete_created_data
   Scenario Outline: Invalid Authorization
     Given I perform "<REQUEST>" request to "<END_POINT>"
     When I set the header "Authorization" with "Bearer 59cfd59f5641d906f70bdb00"
