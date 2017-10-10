@@ -1,4 +1,4 @@
-@Functional
+@functional
 Feature: Users get by Id as a negative
 
   Background:

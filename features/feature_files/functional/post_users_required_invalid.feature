@@ -1,4 +1,4 @@
-@Functional
+@functional
 
 Feature: Create a new user with blank or invalid information
 

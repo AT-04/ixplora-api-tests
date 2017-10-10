@@ -1,4 +1,4 @@
-@CRUD @Delete_created_data
+@crud @Delete_created_data
 Feature: Create a new user
 
   Scenario: Verify that "/users" end point can perform "POST" request

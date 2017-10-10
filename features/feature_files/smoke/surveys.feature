@@ -1,4 +1,4 @@
-@Smoke @Delete_created_data
+@smoke @Delete_created_data
 Feature: Survey
 
   Background:

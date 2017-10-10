@@ -1,4 +1,4 @@
-@CRUD @Delete_created_data
+@crud @Delete_created_data
 Feature: Get Surveys results type json
 
   Background:

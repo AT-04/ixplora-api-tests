@@ -1,4 +1,4 @@
-@Functional
+@functional
 #TODO
 Feature: Negative expected for POST an Email
 

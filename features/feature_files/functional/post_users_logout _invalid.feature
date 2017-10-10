@@ -1,4 +1,4 @@
-@Functional
+@functional
 
   #todo
 Feature: Users logout negative
