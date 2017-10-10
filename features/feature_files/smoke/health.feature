@@ -1,4 +1,4 @@
-@Smoke
+@smoke
 Feature: Server Health
 
   Scenario: Verify that "/health" end point can perform "GET" request.

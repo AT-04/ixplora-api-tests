@@ -1,10 +1,10 @@
-Given(/^I register a new "(user|editor)"/) do |user_type|
-  user_name = Faker::Name.name #=> "Christophe Bar tell"
-  user_email = Faker::Internet.email #=> "kirsten.greenholt@corkeryfisher.info"
+Given(/^I register a new "(user|editor)" and I save the request as "([^"]*)"$/) do |user_type, user_request|
+  user_name = Faker::Name.name
+  user_email = Faker::Internet.email
 
   steps %(
    Given I perform "POST" request to "/users"
-    When  I set and store the following "user_request" body
+    When  I set the following body
     """
     {
      "_id": "",
@@ -20,70 +20,71 @@ Given(/^I register a new "(user|editor)"/) do |user_type|
      "role": "#{user_type}"
     }
     """
+    And I store the request body as "#{user_request}"
     And I send the request
     Then I expect a "201" status code
-    And I store the response body as "user_response"
   )
 end
 
-And(/^I validate email$/) do
-  steps '
-    And I run a query to filter the field "userId" with value "{user_response._id}" to "email_tokens"
+And(/^I validate email using "(.*)"$/) do |user_id|
+  steps %(
+    And I run a query to filter the field "userId" with value "{#{user_id}}" in "email_tokens"
     And I store the "token" of query result as "mail_token"
     And I perform "POST" request to "/tokens"
     And I set the following custom body:
       | token | mail_token |
     And I send the request
     Then I expect a "200" status code
-  '
+  )
 end
 
-And(/^I login and get token$/) do
-  steps '
+And(/^I login to "(MOBILE_APP|WEB_APP)" using "(.*)" and "(.*)"$/) do |app_name, user_email, user_password|
+  steps %(
     And I perform "POST" request to "/users/login"
     And I set the following custom body:
-      | email    | {user_response.primaryEmail}     |
-      | password | {user_request.password}          |
-      | type     | 0                                |
-      | app      | MOBILE_APP                       |
+      | email    | {#{user_email}}     |
+      | password | {#{user_password}}  |
+      | type     | 0                   |
+      | app      | #{app_name}         |
     And I send the request
     Then I expect a "200" status code
-    And I store the response body as "login_response"
-  '
+  )
 end
 
-When(/^I create a survey$/) do
-  steps '
+When(/^I create a survey using the Authorization "([^"]*)"$/) do |login_response|
+  survey_title = Faker::Educator.course
+  survey_description = Faker::Lorem.sentence
+  steps %(
     And I perform "POST" request to "/surveys"
-    And I set the header "Authorization" with "Bearer {login_response.token}"
-    When  I set and store the following "survey_request" body
+    And I set the header "Authorization" with "Bearer {#{login_response}}"
+    When I set the following body
     """
     {
-    	"audience": 0,
-	    "creationDate": "2017-09-29T23:24:54.255Z",
-    	"description": "Desc.",
-    	"domains": [],
-    	"expirationDate": "2017-10-06T23:24:54.255Z",
-	    "questions": [],
-	    "releaseDate": "2017-09-29T23:24:54.255Z",
-    	"responseQuantity": 0,
-	    "state": 0,
-    	"title": "Test Survey",
-    	"_id": ""
+      "_id": "",
+      "title": "#{survey_title}",
+      "description": "#{survey_description}",
+      "audience": 0,
+      "domains": [],
+      "state": 0,
+      "releaseDate": "2017-10-07T16:25:23.345Z",
+      "creationDate": "2017-10-07T16:25:23.345Z",
+      "expirationDate": "2017-10-14T16:25:23.345Z",
+      "responseQuantity": 0,
+      "questions": []
     }
     """
     And I send the request
     Then I expect a "201" status code
-    And I store the response body as "survey_response"
-    And I perform "PUT" request to "/surveys/{survey_response._id}/state"
-    And I set the header "Authorization" with "Bearer {login_response.token}"
-    When  I set and store the following "survey_request" body
-    """
-    {
-     "state": "1"
-    }
-    """
+  )
+end
+
+When(/^I change the "([^"]*)" state to "(\d+)" with "([^"]*)"$/) do |survey_id, state_code, user_token|
+  steps %(
+    And I perform "PUT" request to "/surveys/{#{survey_id}}/state"
+    And I set the header "Authorization" with "Bearer {#{user_token}}"
+    And I set the following custom body:
+    | state | #{state_code} |
     And I send the request
     Then I expect a "200" status code
-  '
+  )
 end
