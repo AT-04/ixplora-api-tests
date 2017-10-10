@@ -10,6 +10,7 @@ Feature: Surveys
     And I create a survey using the Authorization "login_response.token"
     And I store the request body as "survey_request"
 
+  @delete_created_data
   Scenario Outline: Invalid Authorization
     Given I perform "POST" request to "/surveys"
     When I set the header "Authorization" with "Bearer {login_response.token}"
@@ -45,7 +46,7 @@ Feature: Surveys
     #INVALID ID
       | ID      | TITLE  | DESCRIPTION      | AUD | STATE | RELEASE_DATE             | CREATION_DATE            | EXPIRATION_DATE          | RES_Q |
       | 5928025 | Sports | Sports questions | 0   | 0     | 2017-10-07T16:25:23.345Z | 2017-10-07T16:25:23.345Z | 2017-10-14T16:25:23.345Z | 0     |
-      #INVALID AND UN-EXISTENT AUDIENCE
+    #INVALID AND UN-EXISTENT AUDIENCE
       |         | Sports | Sports questions | 3   | 0     | 2017-10-07T16:25:23.345Z | 2017-10-07T16:25:23.345Z | 2017-10-14T16:25:23.345Z | 0     |
     #INVALID STATES
       |         | Sports | Sports questions | 0   | 1     | 2017-10-07T16:25:23.345Z | 2017-10-07T16:25:23.345Z | 2017-10-14T16:25:23.345Z | 0     |
