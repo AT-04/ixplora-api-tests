@@ -17,4 +17,3 @@ Feature: User Logout
       | newPassword | anotherPassword         |
     And I send the request
     Then I expect a "200" status code
-#    And I store the response body as "password_response"

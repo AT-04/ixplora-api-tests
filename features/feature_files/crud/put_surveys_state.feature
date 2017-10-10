@@ -26,8 +26,8 @@ Feature: Surveys state
     Then I expect a "200" status code
     And I store the response body as "state_response"
     And I verify the "state_response" schema with "put_surveys_state" template
-#    And I build the expected response with following data
-#      | request_name  | survey_request    |
-#      | response_name | state_response    |
-#      | template_name | put_surveys_state |
-#    Then I verify "state_response" with built expected response
+    And I build the expected response with following data
+      | request  | state_request     |
+      | response | state_response    |
+      | template | get_surveys_by_id |
+    Then I verify "state_response" with built expected response

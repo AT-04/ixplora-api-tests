@@ -18,8 +18,8 @@ Feature: Surveys clone
     Then I expect a "201" status code
     And I store the response body as "clone_surveys_response"
     And I verify the "clone_surveys_response" schema with "post_surveys_clone" template
-#    And I build the expected response with following data
-#      | request_name  | survey_request         |
-#      | response_name | clone_surveys_response |
-#      | template_name | post_survey_clone      |
-#    Then I verify "clone_surveys_response" with built expected response
+    And I build the expected response with following data
+      | request  | survey_request         |
+      | response | clone_surveys_response |
+      | template | get_surveys_by_id      |
+    Then I verify "clone_surveys_response" with built expected response

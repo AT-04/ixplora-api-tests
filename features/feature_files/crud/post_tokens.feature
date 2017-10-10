@@ -9,14 +9,14 @@ Feature: User Tokens
 
   Scenario: Verify that "/tokens" end point can performing "POST" request
     Given I perform "POST" request to "/tokens"
-    When I set the following custom body:
+    When I set the following custom body and store as "token_request"
       | token | mail_token |
     And I send the request
     Then I expect a "201" status code
     And I store the response body as "token_response"
     And I verify the "token_response" schema with "post_tokens" template
-#    And I build the expected response with following data
-#      | request_name  | survey_request         |
-#      | response_name | clone_surveys_response |
-#      | template_name | post_token             |
-#    Then I verify "clone_surveys_response" with built expected response
+    And I build the expected response with following data
+      | request  | token_request  |
+      | response | token_response |
+      | template | post_tokens    |
+    Then I verify "token_response" with built expected response

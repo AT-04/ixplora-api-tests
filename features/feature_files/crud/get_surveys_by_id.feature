@@ -19,8 +19,8 @@ Feature: Surveys
     Then I expect a "200" status code
     And I store the response body as "surveys_response_get"
     And I verify the "surveys_response_get" schema with "get_surveys_by_id" template
-#    And I build the expected response with following data
-#      | request_name  | survey_request       |
-#      | response_name | surveys_response_get |
-#      | template_name | get_surveys          |
-#    Then I verify "surveys_response_get" with built expected response
+    And I build the expected response with following data
+      | request  | survey_request       |
+      | response | surveys_response_get |
+      | template | get_surveys_by_id    |
+    Then I verify "surveys_response_get" with built expected response

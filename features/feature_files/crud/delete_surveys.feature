@@ -18,7 +18,8 @@ Feature: Delete Surveys
     Then I expect a "200" status code
     And I store the response body as "surveys_delete_response"
     And I verify the "surveys_delete_response" schema with "delete_surveys" template
-#    And I build the expected response with following data
-#      | response_name | surveys_delete_response |
-#      | template_name | delete_surveys          |
-#    Then I verify "surveys_delete_response" with built expected response
+    And I build the expected response with following data
+      | request  | survey_request          |
+      | response | surveys_delete_response |
+      | template | delete_surveys          |
+    Then I verify "surveys_delete_response" with built expected response

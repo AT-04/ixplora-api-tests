@@ -8,57 +8,37 @@ module ResponseBuilder
     @copy = @template.is_a?(Hash) ? Hash[@template] : [].replace(@template)
   end
 
-  def self.replace_in_hash(hash)
-    @template.each_key do |key|
-      if !(@template[key].eql? hash[key]) && (hash.key? key)
-        @copy[key] = hash[key]
-      end
-    end
-    @copy
-  end
-
-  def self.diff_hash(hash)
-    hash.delete_if { |key| !(@copy[key].eql? @template[key]) }
-  end
-
-  def self.build_response(filename, request, expected, response)
+  def self.build_response(filename, request, response)
     parse_file(filename)
     request = JSON.parse(request)
-    expected = JSON.parse(expected)
     response = JSON.parse(response)
-    @copy.is_a?(Hash) ? build_with_hash(request, expected, response) : build_with_array(request, expected, response)
+    @template = @template.is_a?(Hash) ? build_with_hash(request, @template) : build_with_array(request, @template)
+    @template = @template.is_a?(Hash) ? build_with_hash(response, @template) : build_with_array(response, @template)
   end
 
-  def self.build_with_hash(request, expected, response)
-    replace_in_hash(request)
-    replace_in_hash(expected)
-    replace_in_hash(diff_hash(response))
-  end
-
-  def self.build_with_array(request, expected, response)
-    replace_in_array(request)
-    replace_in_array(expected)
-    replace_in_array(diff_array(response[0]))
-  end
-
-  def self.replace_in_array(array)
-    @template[0].each_key do |key|
-      if !(@template[0][key].eql? array[key]) && (array.key? key)
-        @copy[0][key] = array[key]
+  def self.build_with_hash(modifier, template)
+    template.each_key do |key|
+      if template[key].is_a?(Hash)
+        template[key] = build_with_hash(modifier[key], template[key])
+      elsif template[key].is_a?(Array)
+        template[key] = build_with_array(modifier[key], template[key])
+      elsif template[key] != modifier[key]
+        template[key] = modifier[key]
       end
     end
-    @copy
+    template
   end
 
-  def self.diff_array(hash)
-    hash.delete_if { |key| !(@copy[0][key].eql? @template[0][key]) }
-  end
-
-  def self.build_error_response(filename, expected, response)
-    parse_file(filename)
-    expected = JSON.parse(expected)
-    response = JSON.parse(response)
-    replace_in_hash(expected)
-    replace_in_hash(diff_hash(response))
+  def self.build_with_array(modifier, template)
+    template.each_with_index do |val, index|
+      if val.is_a?(Hash)
+        template[index] = build_with_hash(modifier[index], template[index])
+      elsif val.is_a?(Array)
+        template[index] = build_with_array(modifier[index], template[index])
+      elsif val != modifier[index]
+        template[index] = modifier[index]
+      end
+    end
+    template
   end
 end

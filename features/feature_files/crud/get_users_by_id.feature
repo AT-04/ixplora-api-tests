@@ -15,8 +15,3 @@ Feature: Users
     Then I expect a "200" status code
     And I store the response body as "user_info_response"
     And I verify the "user_info_response" schema with "get_users_by_id" template
-#    And I build the expected response with following data
-#      | request_name  | user_request       |
-#      | response_name | user_info_response |
-#      | template_name | user_creation      |
-#    Then I verify "user_info_response" with built expected response

@@ -17,9 +17,3 @@ Feature: Users login
     Then I expect a "201" status code
     And I store the response body as "login_response"
     And I verify the "login_response" schema with "post_users_login" template
-
-#    And I build the expected response with following data
-#      | request_name  | login_request   |
-#      | response_name | emails_response |
-#      | template_name | post_user_email |
-#    Then I verify "clone_surveys_response" with built expected response

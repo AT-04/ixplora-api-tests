@@ -1,11 +1,8 @@
 Given(/^I build the expected response with following data$/) do |table|
   data = table.rows_hash
-  body_request = Helper.get_stored_value(data['request_name'])
-  body_response = Helper.get_stored_value(data['response_name'])
-  puts body_response.to_json
-  template_name = data['template_name']
-  json = '{}'
-  response_expect_name = 'expected_response'
-  expected_response = ResponseBuilder.build_response(template_name, body_request.to_json, json, body_response.to_json)
-  Helper.add_data(response_expect_name, expected_response)
+  request = data['request'] ? Helper.get_stored_value(data['request']) : {}
+  response = data['response'] ? Helper.get_stored_value(data['response']) : {}
+  template = data['template']
+  expected = ResponseBuilder.build_response(template, request.to_json, response.to_json)
+  Helper.add_data('expected_response', expected)
 end

@@ -1,6 +1,0 @@
-{
-  "_id": "String",
-  "numQuestions": "Int32",
-  "releaseDate": "Date",
-  "expirationDate": "Date"
-}

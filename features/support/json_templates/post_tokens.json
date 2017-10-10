@@ -4,5 +4,5 @@
   "token": "String",
   "userId": "String",
   "email": "String",
-  "__v": "Int32"
+  "__v": "Integer"
 }

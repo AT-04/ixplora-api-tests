@@ -17,8 +17,3 @@ Feature: User email
     Then I expect a "201" status code
     And I store the response body as "emails_response"
     And I verify the "emails_response" schema with "post_users_emails" template
-#    And I build the expected response with following data
-#      | request_name  | user_request    |
-#      | response_name | emails_response |
-#      | template_name | post_user_email |
-#    Then I verify "clone_surveys_response" with built expected response

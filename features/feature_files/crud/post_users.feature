@@ -24,8 +24,8 @@ Feature: Create a new user
     Then I expect a "201" status code
     And I store the response body as "user_response"
     And I verify the "user_response" schema with "post_users" template
-#    When I build the expected response with following data
-#      | request_name         | user_request           |
-#      | response_name        | user_response          |
-#      | template_name        | user_creation          |
-#    Then I verify "user_response" with built expected response
+    And I build the expected response with following data
+      | request  | user_request  |
+      | response | user_response |
+      | template | post_users    |
+    Then I verify "user_response" with built expected response

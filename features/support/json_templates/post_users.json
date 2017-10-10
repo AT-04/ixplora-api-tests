@@ -1,10 +1,10 @@
 {
-  "__v": "Int 32",
+  "__v": "Integer",
   "name": "String",
   "primaryEmail": "String",
   "password": "String",
-  "birthDate": "Date",
-  "validated": "Boolean",
+  "birthDate": "String",
+  "validated": "boolean",
   "country": "String",
   "city": "String",
   "gender": "String",

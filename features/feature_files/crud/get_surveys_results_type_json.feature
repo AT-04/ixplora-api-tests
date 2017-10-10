@@ -19,8 +19,3 @@ Feature: Get Surveys results type json
     Then I expect a "200" status code
     And I store the response body as "surveys_result_response"
     And I verify the "surveys_result_response" schema with "get_surveys_results_json" template
-#    And I build the expected response with following data
-#      | request_name  | survey_request          |
-#      | response_name | surveys_result_response |
-#      | template_name | get_surveys_results_json |
-#    Then I verify "surveys_result_response" with built expected response

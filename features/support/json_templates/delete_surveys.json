@@ -1,4 +1,4 @@
-[{
+{
   "_id": "String",
   "title": "String",
   "description": "String",
@@ -8,5 +8,8 @@
   "creationDate": "Date",
   "expirationDate": "Date",
   "responseQuantity": "Int32",
+  "owner": "String",
+  "__v": "Int32",
+  "questions": [],
   "domains": []
-}]
+}
