@@ -1,5 +1,5 @@
 @functional
-Feature: Users login negative
+Feature: Users login
 
   Background:
     Given I register a new "user" and I save the request as "user_request"

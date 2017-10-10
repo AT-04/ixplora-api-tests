@@ -1,5 +1,5 @@
 @functional
-Feature: Negative expected for POST an Email
+Feature: Users email validation
 
   Background:
     Given I register a new "user" and I save the request as "user_request"

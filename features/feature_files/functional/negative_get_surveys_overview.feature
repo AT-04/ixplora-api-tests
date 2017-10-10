@@ -1,5 +1,5 @@
 @functional
-Feature: Get Surveys overview error with invalid information
+Feature: Surveys
 
   Background:
     Given I register a new "editor" and I save the request as "editor_request"
@@ -32,4 +32,3 @@ Feature: Get Surveys overview error with invalid information
       | 89761230    |
       | safmnASFSDF |
       |             |
-    

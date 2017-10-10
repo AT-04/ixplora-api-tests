@@ -1,5 +1,5 @@
 @functional
-Feature: Survey results
+Feature: Surveys
 
   Background:
     Given I register a new "editor" and I save the request as "editor_request"
@@ -13,14 +13,14 @@ Feature: Survey results
 
   @delete_created_data
   Scenario Outline: Send with invalid parameters
-    Given I perform "GET" request to "/surveys/<SURVEY_ID>/results?type=<TYPE>"
+    Given I perform "GET" request to "/surveys/{survey_response._id}/results?type=<TYPE>"
     When I set the header "Authorization" with "Bearer {login_response.token}"
     And I send the request
-    Then I expect a "404" status code
+    Then I expect a "400" status code
 
     Examples:
-      |     SURVEY_ID           |       TYPE      |
-      |{survey_response._id}    |       jason     |
-      |{survey_response._id}    |       csv1      |
-      |{survey_response._id}    |                 |
-      |{survey_response._id}    |        123      |
+      | TYPE  |
+      | jason |
+      | xls   |
+      |       |
+      | 123   |

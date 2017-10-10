@@ -1,5 +1,5 @@
 @functional
-Feature: Create a new user with blank or invalid information
+Feature: Users
 
   @delete_created_data
   Scenario Outline: Verify the negative responses after POST a new user

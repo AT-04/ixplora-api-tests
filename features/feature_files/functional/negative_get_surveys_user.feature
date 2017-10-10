@@ -2,10 +2,10 @@
 Feature: Surveys
 
   Background:
-    Given I register a new "user" and I save the request as "editor_request"
-    When I store the response body as "editor_response"
-    And I validate email using "editor_response._id"
-    And I login to "MOBILE_APP" using "editor_response.primaryEmail" and "editor_request.password"
+    Given I register a new "user" and I save the request as "user_request"
+    When I store the response body as "user_response"
+    And I validate email using "user_response._id"
+    And I login to "MOBILE_APP" using "user_response.primaryEmail" and "user_request.password"
     And I store the response body as "login_response"
     And I create a survey using the Authorization "login_response.token"
     And I store the request body as "survey_request"

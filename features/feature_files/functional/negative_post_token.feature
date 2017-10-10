@@ -10,7 +10,13 @@ Feature: Token
 
   @delete_created_data
   Scenario Outline: Send invalid token
-    Given I perform "POST" request to "/<TOKENS>"
+    Given I perform "POST" request to "/tokens"
+    When I set the following body
+    """
+    {
+      "token": "<TOKENS>"
+    }
+    """
     When I send the request
     Then I expect a "400" status code
 

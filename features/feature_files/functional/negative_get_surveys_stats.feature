@@ -1,5 +1,5 @@
 @functional
-Feature: Surveys stats invalid Id
+Feature: Surveys
 
   Background:
     Given I register a new "editor" and I save the request as "editor_request"

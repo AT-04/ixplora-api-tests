@@ -1,5 +1,5 @@
 @functional
-Feature: Users logout negative
+Feature: Users logout
 
   Background:
     Given I register a new "user" and I save the request as "user_request"

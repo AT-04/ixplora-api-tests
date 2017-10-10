@@ -1,5 +1,5 @@
 @functional
-Feature: Users get by Id as a negative
+Feature: Users
 
   Background:
     Given I register a new "user" and I save the request as "user_request"
