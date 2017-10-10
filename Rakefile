@@ -20,7 +20,7 @@ task :html_report, [:tag] do |t, args|
   end
   ReportBuilder.build_report
 end
-task :reports, [:tag]do |t, args|
+task :reports, [:tag] do |t, args|
   sh "rake json_report['#{args.tag}']"
   sh "rake html_report['#{args.tag}']"
 end

@@ -1,4 +1,4 @@
-@Functional
+@functional
 Feature: Users login negative
 
   Background:

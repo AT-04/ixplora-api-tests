@@ -1,4 +1,4 @@
-@CRUD @Delete_created_data
+@crud @Delete_created_data
 Feature: health
 
   Scenario: Verify that "/health" end point can perform "GET" request.
