@@ -13,26 +13,26 @@ API testing automation framework for ixplora API developed by team A of AT-04 gr
 
 1. Clone the repository
 
-'''
+```
 https://github.com/AT-04/ixplora-api-tests.git
-'''
+```
 
 2. Enter to the ixplora-api-test folder and run the command:
 
-'''
+```
 bundler install
-'''
+```
 
 3. Edit the env.rb file with the environment configuration properties. The env.rb file and the example is located in:
 
-'''
+```
 ixplora-api-tests/features/support/
-'''
+```
 
 4. To run the tests enter to the ixplora-api-test folder and run the command:
 
-'''
+```
 rake reports['{tag}']
-'''
+```
 
 {tag} can take the values: smoke, crud and functional. E.g: rake reports['smoke']
